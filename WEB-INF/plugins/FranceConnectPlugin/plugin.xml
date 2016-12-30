@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plugin PUBLIC "-//JALIOS//DTD JCMS-PLUGIN 1.6//EN" "http://support.jalios.com/dtd/jcms-plugin-1.6.dtd">
+
+<!-- ======================== Introduction ============================== -->
+<!--                                                                      -->
+<!-- This document describes the properties and the behavior of a plugin. -->
+<!--                                                                      -->
+<!-- ====================== Plugin's attributes ========================= -->
+<!--                                                                      -->
+<!-- The PluginManager will process plugin description to plug components -->
+<!-- and package/deploy files.                                            -->
+<!--                                                                      -->
+<!-- See plugin's DTD for more information.                               -->
+<!--                                                                      -->
+<!-- Default values are in square brackets                                -->
+<!--                                                                      -->
+<!-- name               Internal plugin name. It must be a unique         -->
+<!--                    name. It should ends with "Plugin".               -->
+<!--                                                                      -->
+<!-- version            Version of the plugin (e.g. 0.1, 1.2, ...)        -->
+<!--                                                                      -->
+<!-- author             The author of the plugin.                         -->
+<!--                                                                      -->
+<!-- url                The home page URL of the plugin.                  -->
+<!--                                                                      -->
+<!-- license            The license of the plugin                         -->
+<!--                    (e.g. Proprietary, LGPL, ...)                     -->
+<!--                                                                      -->
+<!-- initialize         Should this plugin be initialized on load. [true] -->
+<!--                                                                      -->
+<!-- order              The order used to load a plugin before an         -->
+<!--                    other. Also used in hooks declaration order. [0]  -->
+<!--                                                                      -->
+<!-- jcms               The JCMS versions this plugin it compatible with. -->
+<!--                    Empty means any versions. A regexp can be used.   -->
+<!--                                                                      -->
+<!-- jsync              Is this plugin compatible with JSync [true]       -->
+<!--                                                                      -->
+<!-- appserver          A list ('|' separator) of compatible application  -->
+<!--                    server (e.g. Tomcat, Resin, Websphere, Weblogic). -->
+<!--                                                                      -->
+<!-- class              the plugin class to instanciate. Do not change    -->
+<!--                    unless you need to override default behavior      -->
+<!--                    [com.example.Plugin]                              -->
+<!--                                                                      -->
+<plugin name="FranceConnectPlugin" version="1.0" author="Benoît Moraillon" license="LGPL" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
+  <!-- ======================== Label and Descriptions ==================== -->
+  <!--                                                                      -->
+  <!-- Plugin's label and description.  Because JCMS is multilingual,       -->
+  <!-- Plugins should be multilingual and declared, at least, in English    -->
+  <!-- and French.                                                          -->
+  <!--                                                                      -->
+  <!-- label              An internationalized label of the plugin.         -->
+  <!--                                                                      -->
+  <!-- description        An internationalized description of the plugin.   -->
+  <!--                                                                      -->
+  <!-- Attribute xml:lang="lang" defines the language value of the tag's    -->
+  <!-- content.                                                             -->
+  <!-- Example: <label xml:lang="en">FranceConnectPlugin</label>                   -->
+  <!--                                                                      -->
+  <!--                                                                      -->
+  <label xml:lang="fr">France Connect</label>
+  <description xml:lang="fr">Module d'authentification déléguée vers France Connect https://franceconnect.gouv.fr</description>
+  <!-- =========================== Dependencies =========================== -->
+  <!--                                                                      -->
+  <!-- A plugin might depends on other plugins and declare a list of        -->
+  <!--  plugins to be loaded before.                                        -->
+  <!--                                                                      -->
+  <!-- dependencies      A list of <dependency>.                            -->
+  <!--                                                                      -->
+  <!-- dependency        Define a requiered plugin. Attribute 'name' must   -->
+  <!--                   contains the name of a plugin.                     -->
+  <!--                                                                      -->
+  <!--
+  <dependencies>
+    <dependency name="OtherPlugin" />
+  </dependencies>
+-->
+  <dependencies>
+    <dependency name="SocialAuthenticationPlugin" />
+    <dependency name="OAuthPlugin" />
+  </dependencies>
+  <!-- ========================== Types and Templates ===================== -->
+  <!--                                                                      -->
+  <!-- type              Files used for *new* JCMS Types must be declared   -->
+  <!--                   using <type> tag. It will be deployed in JCMS      -->
+  <!--                   directory types/Type/**/*                          -->
+  <!--                                                                      -->
+  <!-- templates         Templates used for *old* JCMS Types must be        -->
+  <!--                   declared using <template> tag. It is the same      -->
+  <!--                   declaration than Type-templates.xml.               -->
+  <!--                   It will be deployed in JCMS plugin's directory:    -->
+  <!--                   plugins/Plugin/types/Type/**/* or types/Type/**/*  -->
+  <!--                   if atribute dir="type" is Set.                     -->
+  <!--                                                                      -->
+  <!--
+  <types>
+	  <type name="Type">
+	    <file path="doTypeFullDisplay.jsp" />
+	  </type>
+	  
+	  <templates type="AbstractPortletSkinable">
+	    <template name="custom" file="doAbstractPortletSkinableFullDisplay.jsp" dir="type" usage='full'>
+	      <label xml:lang="en">Custom Template</label>
+	      <label xml:lang="fr">Gabarit Spécifique</label>
+	    </template>
+	    <template name="custom" file="doAbstractPortletSkinableResultDisplay.jsp" usage='query'>
+	      <label xml:lang="en">Custom Template</label>
+	      <label xml:lang="fr">Gabarit Spécifique</label>
+	    </template>
+	  </templates>
+  </types>
+ -->
+  <!-- ============================== Workflows =========================== -->
+  <!--                                                                      -->
+  <!-- workflows         A list of <dependency>.                            -->
+  <!--                                                                      -->
+  <!-- workflow          A worflow represented by its id.                   -->
+  <!--                                                                      -->
+  <!--
+  <workflows>
+    <workflow id="wffranceconnect" />
+  </workflows>
+-->
+  <!-- ========================== Classes and Jars ======================== -->
+  <!--                                                                      -->
+  <!-- jars              A Java Library represted by it's relative path to  -->
+  <!--                   WEB-INF/lib. Warning! conflict might occur.        -->
+  <!--                                                                      -->
+  <!-- java-classes      A list a <java> files represented by their full    -->
+  <!--                   class names.                                       -->
+  <!--                                                                      -->
+  <!--
+  <jars>
+    <jar path="franceconnect.jar" />
+  </jars>
+
+  <java-classes>
+    <java package="com.example.jcmsplugin.franceconnect" />
+  </java-classes>
+ -->
+ 
+ 
+ 
+ <java-classes>
+    <java package="bzh.jcmsplugin.fc" />
+    
+  </java-classes>
+ 
+  <!-- ========================== Plugin Components ======================= -->
+  <!--                                                                      -->
+  <!-- Plugin Components are Java classes implementing the PluginComponent  -->
+  <!-- interface and extending a given JCMS Hook.                           -->
+  <!--                                                                      -->
+  <!-- If a Plugin Component implements also JPropertiesListener, it is     -->
+  <!-- automatically registered to be notified of properties changes.       -->
+  <!--                                                                      -->
+  <!-- storelistener     Extends a JCMS StoreListener to listen             -->
+  <!--                   JCMS data mutation.                                -->
+  <!--                                                                      -->
+  <!-- datacontroller    Extends a JCMS DataController to control JCMS data -->
+  <!--                   mutations.                                         -->
+  <!--                                                                      -->
+  <!-- channellistener   Extends a JCMS ChannelListener to handle JCMS life -->
+  <!--                   cycle events.                                      -->
+  <!--                                                                      -->
+  <!-- queryfilter       Extends a JCMS QueryFilter to add custom search    -->
+  <!--                   query filter.                                      -->
+  <!--                                                                      -->
+  <!-- cleanfilter       Extends a JCMS CleanFilter to add custom store     -->
+  <!--                   clean filter.                                      -->
+  <!--                                                                      -->
+  <!-- authenticationhandler  Extends a JCMS  AuthenticationHandler to      -->
+  <!--                        add custom authentication mechanism.          -->
+  <!--                                                                      -->
+  <!-- policyfilter      Extends a JCMS PolicyFilter to modify some JCMS    -->
+  <!--                   behaviors:                                         -->
+  <!--                   * RightPolicyFilter  * ChannelPolicyFilter         -->
+  <!--                   * PortalPolicyFilter * TemplatePolicyFilter        -->
+  <!--                   * StatPolicyFilter   * WebdavPolicyFilter          -->
+  <!--                   * ThumbnailPolicyFilter                            -->
+  <!--                   * LuceneSearchEnginePolicyFilter                   -->
+  <!--                                                                      -->
+  <!-- alarmlistener     Extends a JCMS AlarmListener to listen custom      -->
+  <!--                   alarm events with schedule:                        -->
+  <!--          [minute] [hour] [day of month] [month] [day of week] [year] -->
+  <!--                                                                      -->
+  <!-- jsynclistener     Extends a JCMS JSyncListener to listen             -->
+  <!--                   JSync events.                                      -->
+  <!--                                                                      -->
+  <!--                                                           
+  <plugincomponents>
+    <storelistener         class="com.example.jcmsplugin.franceconnect.FranceConnectStoreListener"  types="Type1 Type2" beforeStoreLoad="false" repeat="true" />
+    <dblistener            class="com.example.jcmsplugin.franceconnect.FranceConnectDBListener"     types="Type1 Type2" />
+    <datacontroller        class="com.example.jcmsplugin.franceconnect.FranceConnectDataController" types="Type1 Type2" />
+    <channellistener       class="com.example.jcmsplugin.franceconnect.FranceConnectChannelListener" />
+    <queryfilter           class="com.example.jcmsplugin.franceconnect.FranceConnectQueryFilter" />
+    <cleanfilter           class="com.example.jcmsplugin.franceconnect.FranceConnectCleanFilter" />
+    <authenticationhandler class="com.example.jcmsplugin.franceconnect.FranceConnectAuthenticationHandler" />
+    <policyfilter          class="com.example.jcmsplugin.franceconnect.FranceConnectRightPolicyFilter" />
+    <alarmlistener         class="com.example.jcmsplugin.franceconnect.FranceConnectAlarmListener" schedule="30 14 * * * *" manager="PluginAlarmManager"/>
+    <alertchannel          class="com.example.jcmsplugin.franceconnect.FranceConnectAlertChannel" />
+    <jsynclistener         class="com.example.jcmsplugin.franceconnect.FranceConnectJSyncListener" />
+  </plugincomponents>
+-->
+  <!-- ============================= Hibernate ============================ -->
+  <!--                                                                      -->
+  <!-- Plugin's Hibernate mapping                                           -->
+  <!--                                                                      -->
+  <!-- mapping           declares a new Hibernate mapping                   -->
+  <!--                                                           
+  <hibernate>
+     <mapping resource="com/example/jcmsplugin/franceconnect/FranceConnect.hbm.xml"/>        
+  </hibernate>
+-->
+  <!-- ============================= OpenAPI ============================== -->
+  <!--                                                                      -->
+  <!-- Plugin's Open API REST resources                                     -->
+  <!--                                                                      -->
+  <!-- class             declares a Restlet resource                        -->
+  <!-- uriTemplate       uriTemplate, after the context path and            -->
+  <!--                   the prefix "rest"                                  -->
+  <!--                                                           
+  <openapi>
+    <resource class="com.example.jcmsplugin.franceconnect.FranceConnectResource" uriTemplate="/plugins/franceconnect/resourceName/{param1}/{param2}" />
+  </openapi>
+-->
+  <!-- ===================== Private/Public/Webapp files ================== -->
+  <!--                                                                      -->
+  <!-- Plugin's files can be deployed in 3 locations:                       -->
+  <!--                                                                      -->
+  <!-- private-files      Files in WEB-INF/plugins/Plugin/**/*              -->
+  <!-- public-files       Files in plugins/Plugin/**/*                      -->
+  <!-- webapp-files       Files anywhere in the webapp                      -->
+  <!--                                                                      -->
+  <!--                                                                      -->
+  <!-- Special plugin's files:                                              -->
+  <!--                                                                      -->
+  <!-- * private-files:                                                     -->
+  <!--   * properties/*            Contains all plugin properties           -->
+  <!--   * properties/languages/*  Contains all plugin language properties  -->
+  <!-- * public-files:                                                      -->
+  <!--   * custom/admin.jsp            Override plugin's administration tab -->
+  <!--   * custom/doEditProperties.jsp Override plugin's property tab       -->
+  <!--   * css/portal/*.css            Added to Portal's CSS                -->
+  <!--   * docs/license.txt            License description                  -->
+  <!--   * docs/changelog.txt          Change log                           -->
+  <!--   * docs/index.html             Documentation index                  -->
+  <!--   * docs/iamges/preview.jpg     Plugin's preview (200x150 px)        -->
+  <!--   * docs/iamges/icon.gif        Plugin's icon (16x16 px)             -->
+  <!--                                                                      -->
+  <!-- Templates must be located in types/MyType  directory.                -->
+  <!-- Images    should be located in images/ directory.                    -->
+  <!--                                                                      -->
+  <!-- PROPERTIES                                                           -->
+  <!-- **********                                                           -->
+  <!-- Must be declared in private-files/...                                -->
+  <!-- Might ends with custom editor:                                       -->
+  <!-- * number:  a short textfield                                         -->
+  <!-- * area:    a textarea                                                -->
+  <!-- * boolean: a boolean editor                                          -->
+  <!--                                                                      -->
+  <!--                                                                      -->
+  <!-- TARGETS                                                              -->
+  <!-- *******                                                              -->
+  <!-- Custom JSP files can be injected in severals place of the JCMS       -->
+  <!-- user interface, the "targets" (use '|' for multiple targets).        -->
+  <!--                                                                      -->
+  <!-- DISPLAY_HEADER          After header icons                           -->
+  <!-- PUBLICATION_ACTIONS_MAIN_ITEM_BOTTOM     After icons but in the table                 -->
+  <!-- DISPLAY_FOOTER          At the begining of the footer                -->
+  <!--                                                                      -->
+  <!-- EMPTY_HEADER            In the <HEAD> tag                            -->
+  <!-- EMPTY_HEADER_START      At the begining of doEmptyHeader.jsp         -->
+  <!-- EMPTY_FOOTER            Before end of the <BODY> tag                 -->
+  <!--                                                                      -->
+  <!-- EDIT_PUB_HEADER         Edit form: after Handler.validate().         -->
+  <!-- EDIT_PUB_FOOTER         Edit form: after the tabs (to add new ones)  -->
+  <!-- EDIT_PUB_BUTTON         Edit form: after the buttons.                -->
+  <!-- EDIT_PUB_MAINTAB        Edit form: in the content tab, once per      -->
+  <!--                                    type in a type hierarchy, at the  -->
+  <!--                                    end of fields of current type     -->
+  <!-- EDIT_PUB_MAINTAB_HEADER         Edit form: at the begining of the content tab       -->
+  <!-- EDIT_PUB_MAINTAB_FOOTER         Edit form: at the end of the content tab            -->
+  <!-- EDIT_PUB_CATTAB_HEADER          Edit form: at the begining of the categories tab    -->
+  <!-- EDIT_PUB_CATTAB_FOOTER          Edit form: at the end of the categoriestab          -->
+  <!-- EDIT_PUB_READRIGHTTAB_HEADER    Edit form: at the begining of the read rights tab   -->
+  <!-- EDIT_PUB_READRIGHTTAB_FOOTER    Edit form: at the end of the read rights tab        -->
+  <!-- EDIT_PUB_UPDATERIGHTTAB_HEADER  Edit form: at the begining of the update rights tab -->
+  <!-- EDIT_PUB_UPDATERIGHTTAB_FOOTER  Edit form: at the end of the update rights tab      -->
+  <!-- EDIT_PUB_TEMPLATETAB_HEADER     Edit form: at the begining of the template tab      -->
+  <!-- EDIT_PUB_TEMPLATETAB_FOOTER     Edit form: at the end of the template tab           -->
+  <!-- EDIT_PUB_WFTAB_HEADER           Edit form: at the begining of the workflow tab      -->
+  <!-- EDIT_PUB_WFTAB_FOOTER           Edit form: at the end of the workflow tab           -->
+  <!-- EDIT_PUB_ADVTAB_HEADER          Edit form: at the begining of the advanced tab      -->
+  <!-- EDIT_PUB_ADVTAB_FOOTER          Edit form: at the end of the advanced tab           -->
+  <!--                                                                      -->
+  <!-- SEARCH                  FO Search: after the tabs (to add new ones)  -->
+  <!-- SEARCH_WORK             BO Search: after the tabs (to add new ones)  -->
+  <!-- QUERY_HEADER            FO Query: to override/add refinement         -->
+  <!-- QUERY_WORK_HEADER       BO Query: to override/add refinement         -->
+  <!--                                                                      -->
+  <!-- EDIT_GRP_MAINTAB_HEADER           Group edit form: at beginning of the general tab              -->
+  <!-- EDIT_GRP_MAINTAB_FOOTER           Group edit form: at end of the general tab                    -->
+  <!-- EDIT_GRP_PUBLISHRIGHTTAB_HEADER   Group edit form: at beginning of the publish rights tab       -->
+  <!-- EDIT_GRP_PUBLISHRIGHTTAB_FOOTER   Group edit form: at end of the publish rights tab             -->
+  <!-- EDIT_GRP_CATUSEHRIGHTTAB_HEADER   Group edit form: at beginning of the category use rights tab  -->
+  <!-- EDIT_GRP_CATUSEHRIGHTTAB_FOOTER   Group edit form: at end of the  category use rights tab       -->
+  <!-- EDIT_GRP_CATEDITHRIGHTTAB_HEADER  Group edit form: at beginning of the category edit rights tab -->
+  <!-- EDIT_GRP_CATEDITHRIGHTTAB_FOOTER  Group edit form: at end of the category edit rights tab       -->
+  <!-- EDIT_GRP_ADVTAB_HEADER            Group edit form: at beginning of the advanced tab             -->
+  <!-- EDIT_GRP_ADVTAB_FOOTER            Group edit form: at end of the advanced tab                   -->
+  <!-- EDIT_GROUP                        Group edit form: after the tabs (to add new ones)             -->
+  <!--                                                                      -->
+  <!-- MEMBER_FULLDISPLAY      At the end of doMemberFullDisplay.jsp        -->
+  <!-- EDIT_MBR_MAINTAB_HEADER           Member edit form: at beginning of the general tab              -->
+  <!-- EDIT_MBR_MAINTAB_FOOTER           Member edit form: at end of the general tab                    -->
+  <!-- EDIT_MBR_GROUPTAB_HEADER          Member edit form: at beginning of the group tab                -->
+  <!-- EDIT_MBR_GROUPTAB_FOOTER          Member edit form: at end of the group tab                      -->
+  <!-- EDIT_MBR_READRIGHTTAB_HEADER      Member edit form: at beginning of the read rights tab          -->
+  <!-- EDIT_MBR_READRIGHTTAB_FOOTER      Member edit form: at end of the read rights tab                -->
+  <!-- EDIT_MBR_PUBLISHRIGHTTAB_HEADER   Member edit form: at beginning of the publish rights tab       -->
+  <!-- EDIT_MBR_PUBLISHRIGHTTAB_FOOTER   Member edit form: at end of the publish rights tab             -->
+  <!-- EDIT_MBR_CATUSEHRIGHTTAB_HEADER   Member edit form: at beginning of the category use rights tab  -->
+  <!-- EDIT_MBR_CATUSEHRIGHTTAB_FOOTER   Member edit form: at end of the  category use rights tab       -->
+  <!-- EDIT_MBR_CATEDITHRIGHTTAB_HEADER  Member edit form: at beginning of the category edit rights tab -->
+  <!-- EDIT_MBR_CATEDITHRIGHTTAB_FOOTER  Member edit form: at end of the category edit rights tab       -->
+  <!-- EDIT_MBR_ADVTAB_HEADER            Member edit form: at beginning of the advanced tab             -->
+  <!-- EDIT_MBR_ADVTAB_FOOTER            Member edit form: at end of the advanced tab                   -->
+  <!-- EDIT_MEMBER                       Member edit form: after the tabs (to add new ones)             -->
+  <!-- EDIT_MEMBER_PROFILE               Member profile form: after the tabs (to add new ones)          -->
+  <!-- MEMBER_PROFILE          In memberProfile.jsp(to add new tabs)        -->
+  <!-- MEMBER_PROFILE_MAINTAB  To add new box in memberProfile.jsp          -->
+  <!--                                                                      -->
+  <!-- EDIT_NOTIFICATION_HEADER    Member and Group edit Form : At beginning of notification tab  -->
+  <!-- EDIT_NOTIFICATION_FOOTER    Member and Group edit Form : At end of notification tab        -->
+  <!--                                                                      -->
+  <!-- EDIT_CAT_MAINTAB_HEADER         Category edit form: at beginning of the general tab      -->
+  <!-- EDIT_CAT_MAINTAB_FOOTER         Category edit form: at end of the general tab            -->
+  <!-- EDIT_CAT_PRESENTATIONTAB_HEADER Category edit form: at beginning of the presentation tab -->
+  <!-- EDIT_CAT_PRESENTATIONTAB_FOOTER Category edit form: at end of the presentation tab       -->
+  <!-- EDIT_CAT_FRIENDLYURLTAB_HEADER  Category edit form: at beginning of the friendly url tab -->
+  <!-- EDIT_CAT_FRIENDLYURLTAB_FOOTER  Category edit form: at end of the friendly url tab       -->
+  <!-- EDIT_CAT_READRIGHTTAB_HEADER    Category edit form: at beginning of the read rights tab  -->
+  <!-- EDIT_CAT_READRIGHTTAB_FOOTER    Category edit form: at end of the read rights tab        -->
+  <!-- EDIT_CAT_PARENTTAB_HEADER       Category edit form: at beginning of the parent tab       -->
+  <!-- EDIT_CAT_PARENTTAB_FOOTER       Category edit form: at end of the parent tab             -->
+  <!-- EDIT_CAT_ADVTAB_HEADER          Category edit form: at beginning of the advanced tab     -->
+  <!-- EDIT_CAT_ADVTAB_FOOTER          Category edit form: at end of the advanced tab           -->
+  <!-- EDIT_CATEGORY                   Category edit form: after the tabs (to add new ones)     -->
+  <!--                                                                      -->
+  <!-- EDIT_WS_MAINTAB_HEADER     Workspace edit form : at beginning of the general tab   -->
+  <!-- EDIT_WS_MAINTAB_FOOTER     Workspace edit form : at end of the general tab         -->
+  <!-- EDIT_WS_TYPETAB_HEADER     Workspace edit form : at beginning of the types tab     -->
+  <!-- EDIT_WS_TYPETAB_FOOTER     Workspace edit form : at end of the types tab           -->
+  <!-- EDIT_WORKSPACE             Workspace edit form : after the tabs (to add new ones)  -->
+  <!--                                                                                    -->
+  <!-- EDIT_PUB_FORM_HEADER         Front Office Forms: before form tag                   -->
+  <!-- EDIT_PUB_FORM_FOOTER         Front Office Forms: before buttons                    -->
+  <!-- DATA_REPORT             Data Report: after the tabs (to add new one) -->
+  <!-- ADMIN_FOOTER            In doAdminFooter.jsp bar                     -->
+  <!--                                                                      -->
+  <!-- ADMIN_USERS             Targets in admin.jsp should be in <li></li>  -->
+  <!-- ADMIN_WORK              There is a target for each boxes             -->
+  <!-- ADMIN_REPORTING                                                      -->
+  <!-- ADMIN_FILE                                                           -->
+  <!-- ADMIN_MONITORING                                                     -->
+  <!-- ADMIN_OPERATION                                                      -->
+  <!-- ADMIN_DATAMODEL                                                      -->
+  <!-- ADMIN_TOOLS                                                          -->
+  <!-- ADMIN_DOCUMENTATION                                                  -->
+  <!-- ADMIN_TECHDOC                                                        -->
+  <!-- ADMIN_COPYRIGHTS                                                     -->
+  <!--                                                                      -->
+  <!-- ADMIN_HEADER_LEFT        Icones on the left                          -->
+  <!-- ADMIN_HEADER_RIGHT       Icones on the right                         -->
+  <!-- ADMIN_HEADER_MENU        End of the menu                             -->
+  <!--                                                                      -->
+  <!-- Targets on the right of sub menus in Admin header                    -->
+  <!--                                                                      -->
+  <!-- ADMIN_USERS_SUBMENU                                                  -->
+  <!-- ADMIN_WORK_SUBMENU                                                   -->
+  <!-- ADMIN_REPORTING_SUBMENU                                              -->
+  <!-- ADMIN_MONITORING_SUBMENU                                             -->
+  <!-- ADMIN_OPERATION_SUBMENU                                              -->
+  <!-- ADMIN_DEV_SUBMENU                                                    -->
+  <!--                                                                      -->
+  <!--                                                                      -->
+  <!-- WORK_HEADER_LEFT         Icones on the left                          -->
+  <!-- WORK_HEADER_RIGHT        Icones on the right                         -->
+  <!-- WORK_HEADER_MENU         End of the menu                             -->
+  <!--                                                                      -->
+  <!-- Targets on the right of sub menus in Work header                     -->
+  <!--                                                                      -->
+  <!-- WORK_CONTENT_SUBMENU                                                 -->
+  <!-- WORK_WORKFLOW_SUBMENU                                                -->
+  <!-- WORK_PORTLET_SUBMENU                                                 -->
+  <!-- WORK_FORM_SUBMENU                                                    -->
+  <!-- WORK_ADMIN_SUBMENU                                                   -->
+  <!--                                                                      -->
+  <!--                                                                      -->
+  <!-- WORKADMIN_USERS          Targets in adminWorkspace.jsp should        -->
+  <!-- WORKADMIN_CONFIGURATION  be in <li></li> There is a target           -->
+  <!-- WORKADMIN_REPORTING      for each boxes                              -->
+  <!-- WORKADMIN_EMAIL                                                      -->
+  <!-- WORKADMIN_DOCUMENTATION                                              -->
+  <!--                                                                      -->
+  <!--                                                                      -->
+  <!-- INCLUDE_BEFORE_SKIN       Before skin generation                     -->
+  <!-- INCLUDE_AFTER_SKIN        After skin generation                      -->
+  <!-- INCLUDE_BEFORE_TEMPLATE   Between skin and template start            -->
+  <!-- INCLUDE_AFTER_TEMPLATE    Between template and skin end              -->
+  <!-- WIKI_HELP                 Wiki help:  work/howToTFR_en.jsp (1TR, 3TD)-->
+  <!--                                                                      -->
+  <!-- RESULTDISPLAY_HEADER      Header of generics result display          -->
+  <!-- RESULTDISPLAY_FOOTER      Footer of generics result display          -->
+  <!--                                                                      -->
+  <!-- DOCCHOOSER_HEADER         Header of the docChooser                   -->
+  <!-- DOCCHOOSER_MAINTAB        At the end of the main tab                 -->
+  <!-- DOCCHOOSER_FOOTER_BUTTON  Footer before buttons                      -->
+  <!--                                                                      -->
+  <!-- AC_CATEGORY               Autocomplete categories                    -->
+  <!-- AC_GROUP                  Autocomplete groups                        -->
+  <!-- AC_MEMBER                 Autocomplete members                       -->
+  <!-- AC_PUBLICATION            Autocomplete publication (+QUeryFilter)    -->
+  <!-- AC_WORKSPACE              Autocomplete workspaces                    -->
+  <!--                                                                      -->
+  <!-- PORTLETMENU               Portlet Menu                               -->
+  <!--                                                                      -->
+  <!-- Target in login forms :                                              -->
+  <!--                                                                      -->
+  <!-- LOGIN_FORM_HEADER         Header of the form in login.jsp            -->
+  <!-- LOGIN_FORM_FOOTER         Footer of the form in login.jsp            -->
+  <!-- PRIVATE_LOGIN_FORM_HEADER Header of the form in privateLogin.jsp     -->
+  <!-- PRIVATE_LOGIN_FORM_FOOTER Footer of the form in privateLogin.jsp     -->
+  <!-- PORTLET_LOGIN_FORM_HEADER Header of the form in doPortletLoginFullDisplay.jsp -->
+  <!-- PORTLET_LOGIN_FORM_FOOTER Footer of the form in doPortletLoginFullDisplay.jsp -->
+  <private-files>
+    <directory path="properties" />
+  </private-files>
+  <public-files>
+    <directory path="js" />
+    <directory path="css" />
+    <directory path="docs" />
+    <directory path="jsp" />
+    
+    
+    
+    
+    <!--    
+    <directory path="images" />
+    -->
+  </public-files>
+</plugin>
+

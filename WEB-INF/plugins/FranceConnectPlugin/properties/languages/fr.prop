@@ -1,0 +1,4 @@
+jcmsplugin.socialauth.provider.franceconnect.class: Provider class
+jcmsplugin.socialauth.provider.franceconnect.apiKey:FC Client ID
+jcmsplugin.socialauth.provider.franceconnect.apiSecret:FC Client Secret
+

@@ -1,0 +1,23 @@
+
+# ----------------------------------------------------------------------
+# Templates {usage = jcmsplugin.plugin.sample}
+# ----------------------------------------------------------------------
+
+# Declaration of a new Usage
+# jcms.resource.default-template.{jcmsplugin.plugin.sample}: custom/jcms/doSampleDisplay.jsp
+
+# Declaration of a new Usage for FullDisplay
+# I18N to cut&past in en.prop / fr.prop
+# ui.editportlet.usage.{jcmsplugin.plugin.sample}: Usage label
+
+# Declaration of a new Usage for Skin
+# I18N to cut&past in en.prop / fr.prop
+# ui.editportlet.usage.skin.{jcmsplugin.plugin.sample}: Usage label for skin
+
+# LESS
+# channel.less.plugins/{Name}/css/plugin.css:    plugins/{Name}/css/plugin.less
+
+jcmsplugin.socialauth.provider.franceconnect.class: bzh.jcmsplugin.fc.provider.FranceConnect
+jcmsplugin.socialauth.provider.franceconnect.apiKey:
+jcmsplugin.socialauth.provider.franceconnect.apiSecret: 
+
