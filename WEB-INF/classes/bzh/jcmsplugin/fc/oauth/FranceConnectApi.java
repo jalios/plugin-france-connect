@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.scribe.builder.api.DefaultApi20;
 import org.scribe.extractors.AccessTokenExtractor;
-import org.scribe.extractors.JsonTokenExtractor;
 import org.scribe.model.OAuthConfig;
 import org.scribe.model.Verb;
 import org.scribe.utils.OAuthEncoder;
@@ -19,10 +18,12 @@ import com.jalios.jcms.Channel;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
 
+import bzh.jcmsplugin.fc.extractors.FranceConnectJsonTokenExtractor;
+
 public class FranceConnectApi extends DefaultApi20 implements JPropertiesListener {
 	private static final Logger logger = Logger.getLogger(FranceConnectApi.class);
-	protected final static String STATE_SESSION_VARIABLE = "state";
-	protected final static String NONCE_SESSION_VARIABLE = "nonce";
+	public final static String STATE_SESSION_VARIABLE = "state";
+	public final static String NONCE_SESSION_VARIABLE = "nonce";
 	private String scope = "";
 	private String fcTokenUrl = "";
 	private String fcAuthorizeUrl = "";
@@ -70,7 +71,7 @@ public class FranceConnectApi extends DefaultApi20 implements JPropertiesListene
 	
 
 	public AccessTokenExtractor getAccessTokenExtractor() {
-		return new JsonTokenExtractor();
+		return new FranceConnectJsonTokenExtractor();
 	}
 
 	@Override

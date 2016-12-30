@@ -63,27 +63,26 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
 			ObjectMapper localObjectMapper = new ObjectMapper();
 
 			JSONObject localJSONObject1 = new JSONObject(str1);
-			String login = "";
+			String siret = "";
 			String nomUsage = "";
 			String email = "";
 			String nomPatronymique = "";
 			String prenom = "";
-			String id = "";
+			String sub = "";
 			String picture = "";
 			String gender = "";
 			String infos = "";
 
 			if (localJSONObject1.has("sub"))
-				id = localJSONObject1.getString("sub");
+				sub = localJSONObject1.getString("sub");
 
 			if (localJSONObject1.has("siret"))
-				login = localJSONObject1.getString("siret");
+				siret = localJSONObject1.getString("siret");
 			if (localJSONObject1.has("preferred_username"))
 				nomUsage = localJSONObject1.getString("preferred_username");
 			if (localJSONObject1.has("email")) {
 				email = localJSONObject1.getString("email");
-				if (Util.isEmpty(login))
-					login = email;
+				
 			}
 			if (localJSONObject1.has("birthdate"))
 				infos = localJSONObject1.getString("birthdate");
@@ -100,7 +99,7 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
 			if (localJSONObject1.has("picture"))
 				picture = localJSONObject1.getString("picture");
 
-			return new UserInfos(login, nomUsage, prenom, email, picture);
+			return new UserInfos(sub, email, prenom,nomUsage, picture);
 
 		} catch (Exception localException) {
 			logger.warn("Could not retrieve user informations on FranceConnect", localException);
