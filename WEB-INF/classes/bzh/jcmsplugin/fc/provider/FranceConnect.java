@@ -11,20 +11,44 @@ import org.scribe.model.Verb;
 import com.jalios.jcms.Channel;
 import com.jalios.jcmsplugin.socialauth.SocialAuthOAuthProvider;
 import com.jalios.jcmsplugin.socialauth.UserInfos;
+import com.jalios.util.JProperties;
+import com.jalios.util.JPropertiesListener;
 import com.jalios.util.Util;
 
-public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect implements SocialAuthOAuthProvider{
+public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
+		implements JPropertiesListener, SocialAuthOAuthProvider {
 	private static Logger logger = Logger.getLogger(FranceConnect.class);
+	private Channel channel = Channel.getChannel();
+
+	private String scope = "";
+	private String userInfoUrl = "";
+
+	public FranceConnect() {
+		super();
+		initProperties();
+
+	}
+
+	@Override
+	public void propertiesChange(JProperties arg0) {
+		initProperties();
+	}
+
+	private void initProperties() {
+		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect.scope");
+		this.userInfoUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect.userInfoUrl");
+
+	}
 
 	public String getScope() {
-		return "openid profile email adress phone siret";
+
+		return scope;
 	}
 
 	public UserInfos getUserInfos(Token paramToken) {
 		try {
 
-			OAuthRequest localOAuthRequest = new OAuthRequest(Verb.GET,
-					"https://fcp.integ01.dev-franceconnect.fr/api/v1/userinfo?schema=openid");
+			OAuthRequest localOAuthRequest = new OAuthRequest(Verb.GET, this.userInfoUrl + "?schema=openid");
 			StringBuilder sb = new StringBuilder();
 			sb.append("Bearer ");
 			sb.append(paramToken.getToken());
@@ -35,6 +59,7 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect impleme
 			if (logger.isTraceEnabled()) {
 				logger.trace("ResponseBody from FranceConnect : " + str1);
 			}
+
 			ObjectMapper localObjectMapper = new ObjectMapper();
 
 			JSONObject localJSONObject1 = new JSONObject(str1);
@@ -58,7 +83,7 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect impleme
 			if (localJSONObject1.has("email")) {
 				email = localJSONObject1.getString("email");
 				if (Util.isEmpty(login))
-					login = email;  
+					login = email;
 			}
 			if (localJSONObject1.has("birthdate"))
 				infos = localJSONObject1.getString("birthdate");
@@ -76,6 +101,7 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect impleme
 				picture = localJSONObject1.getString("picture");
 
 			return new UserInfos(login, nomUsage, prenom, email, picture);
+
 		} catch (Exception localException) {
 			logger.warn("Could not retrieve user informations on FranceConnect", localException);
 		}

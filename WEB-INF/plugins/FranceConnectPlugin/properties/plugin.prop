@@ -18,6 +18,10 @@
 # channel.less.plugins/{Name}/css/plugin.css:    plugins/{Name}/css/plugin.less
 
 jcmsplugin.socialauth.provider.franceconnect.class: bzh.jcmsplugin.fc.provider.FranceConnect
-jcmsplugin.socialauth.provider.franceconnect.apiKey:
+jcmsplugin.socialauth.provider.franceconnect.apiKey: 
 jcmsplugin.socialauth.provider.franceconnect.apiSecret: 
-
+jcmsplugin.socialauth.provider.franceconnect.granttype: authorization_code
+jcmsplugin.socialauth.provider.franceconnect.scope: openid profile email adress phone siret
+jcmsplugin.socialauth.provider.franceconnect.tokenUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/token
+jcmsplugin.socialauth.provider.franceconnect.authorizeUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/authorize
+jcmsplugin.socialauth.provider.franceconnect.userInfoUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/userinfo

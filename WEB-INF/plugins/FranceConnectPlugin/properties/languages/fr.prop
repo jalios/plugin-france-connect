@@ -1,4 +1,11 @@
 jcmsplugin.socialauth.provider.franceconnect.class: Provider class
 jcmsplugin.socialauth.provider.franceconnect.apiKey:FC Client ID
 jcmsplugin.socialauth.provider.franceconnect.apiSecret:FC Client Secret
+jcmsplugin.socialauth.provider.franceconnect.granttype: GrantType
+jcmsplugin.socialauth.provider.franceconnect.scope: Scope
+jcmsplugin.socialauth.provider.franceconnect.tokenUrl:FC Token URL
+jcmsplugin.socialauth.provider.franceconnect.authorizeUrl:FC Authorize URL
+jcmsplugin.socialauth.provider.franceconnect.userInfoUrl:FC UserInfo URL
+
+
 

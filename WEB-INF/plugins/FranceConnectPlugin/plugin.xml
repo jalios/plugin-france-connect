@@ -42,8 +42,8 @@
 <!-- class              the plugin class to instanciate. Do not change    -->
 <!--                    unless you need to override default behavior      -->
 <!--                    [com.example.Plugin]                              -->
-<!--                                                                      -->
-<plugin name="FranceConnectPlugin" version="1.0" author="Benoît Moraillon" license="LGPL" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
+<!--                                                                        -->
+<plugin name="FranceConnectPlugin" version="1.1" author="Benoît Moraillon" license="LGPL" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
   <!-- ======================== Label and Descriptions ==================== -->
   <!--                                                                      -->
   <!-- Plugin's label and description.  Because JCMS is multilingual,       -->
@@ -439,17 +439,10 @@
     <directory path="properties" />
   </private-files>
   <public-files>
-    <directory path="js" />
-    <directory path="css" />
-    <directory path="docs" />
-    <directory path="jsp" />
-    
-    
-    
-    
-    <!--    
     <directory path="images" />
-    -->
+    <directory path="docs" />
+    
+    
   </public-files>
 </plugin>
 
