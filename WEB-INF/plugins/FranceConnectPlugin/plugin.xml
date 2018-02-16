@@ -43,7 +43,7 @@
 <!--                    unless you need to override default behavior      -->
 <!--                    [com.example.Plugin]                              -->
 <!--                                                                        -->
-<plugin name="FranceConnectPlugin" version="1.2" author="Benoît Moraillon" license="LGPL" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
+<plugin name="FranceConnectPlugin" version="1.5" author="Benoît Moraillon - Région Bretagne" license="MIT" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
   <!-- ======================== Label and Descriptions ==================== -->
   <!--                                                                      -->
   <!-- Plugin's label and description.  Because JCMS is multilingual,       -->
@@ -60,7 +60,7 @@
   <!--                                                                      -->
   <!--                                                                      -->
   <label xml:lang="fr">France Connect</label>
-  <description xml:lang="fr">Module d'authentification déléguée vers France Connect https://franceconnect.gouv.fr</description>
+  <description xml:lang="fr">Module d'authentification déléguée vers France Connect Particuliers et/ou Entreprises (https://franceconnect.gouv.fr)</description>
   <!-- =========================== Dependencies =========================== -->
   <!--                                                                      -->
   <!-- A plugin might depends on other plugins and declare a list of        -->
@@ -208,6 +208,14 @@
     <jsynclistener         class="com.example.jcmsplugin.franceconnect.FranceConnectJSyncListener" />
   </plugincomponents>
 -->
+
+  <plugincomponents>
+    <datacontroller        class="bzh.jcmsplugin.fc.dc.FranceConnectMemberDataController" types="Member" />
+   
+  </plugincomponents>
+
+
+
   <!-- ============================= Hibernate ============================ -->
   <!--                                                                      -->
   <!-- Plugin's Hibernate mapping                                           -->

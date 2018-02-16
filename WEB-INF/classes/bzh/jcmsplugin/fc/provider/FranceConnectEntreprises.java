@@ -1,29 +1,33 @@
 package bzh.jcmsplugin.fc.provider;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
+import org.scribe.builder.api.Api;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
 import org.scribe.model.Token;
 import org.scribe.model.Verb;
 
 import com.jalios.jcms.Channel;
+import com.jalios.jcms.context.JcmsContext;
 import com.jalios.jcmsplugin.socialauth.SocialAuthOAuthProvider;
 import com.jalios.jcmsplugin.socialauth.UserInfos;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
-import com.jalios.util.Util;
 
-public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
+import bzh.jcmsplugin.fc.oauth.FranceConnectEntreprisesApi;
+
+public class FranceConnectEntreprises extends bzh.jcmsplugin.fc.oauth.FranceConnectEntreprises
 		implements JPropertiesListener, SocialAuthOAuthProvider {
-	private static Logger logger = Logger.getLogger(FranceConnect.class);
+	private static Logger logger = Logger.getLogger(FranceConnectEntreprises.class);
 	private Channel channel = Channel.getChannel();
 
 	private String scope = "";
 	private String userInfoUrl = "";
 
-	public FranceConnect() {
+	public FranceConnectEntreprises() {
 		super();
 		initProperties();
 
@@ -35,14 +39,20 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
 	}
 
 	private void initProperties() {
-		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect.scope");
-		this.userInfoUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect.userInfoUrl");
+		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.scope");
+		this.userInfoUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl");
 
 	}
 
 	public String getScope() {
 
 		return scope;
+	}
+
+	@Override
+	protected Class<? extends Api> getApiClass() {
+		// TODO Auto-generated method stub
+		return FranceConnectEntreprisesApi.class;
 	}
 
 	public UserInfos getUserInfos(Token paramToken) {
@@ -60,46 +70,44 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
 				logger.trace("ResponseBody from FranceConnect : " + str1);
 			}
 
-			ObjectMapper localObjectMapper = new ObjectMapper();
 
 			JSONObject localJSONObject1 = new JSONObject(str1);
-			String siret = "";
 			String nomUsage = "";
 			String email = "";
-			String nomPatronymique = "";
 			String prenom = "";
 			String sub = "";
-			String picture = "";
-			String gender = "";
-			String infos = "";
-
+			String siret ="";
 			if (localJSONObject1.has("sub"))
 				sub = localJSONObject1.getString("sub");
-
-			if (localJSONObject1.has("siret"))
-				siret = localJSONObject1.getString("siret");
-			if (localJSONObject1.has("preferred_username"))
-				nomUsage = localJSONObject1.getString("preferred_username");
-			if (localJSONObject1.has("email")) {
-				email = localJSONObject1.getString("email");
-				
-			}
-			if (localJSONObject1.has("birthdate"))
-				infos = localJSONObject1.getString("birthdate");
-			if (localJSONObject1.has("birthplace"))
-				infos += " - " + localJSONObject1.getString("birthplace");
-			if (localJSONObject1.has("birthcountry"))
-				infos += " - " + localJSONObject1.getString("birthcountry");
-
+			
+			
 			if (localJSONObject1.has("given_name"))
 				prenom = localJSONObject1.getString("given_name");
+
+			
 			if (localJSONObject1.has("family_name"))
-				infos += "\nNom de naissance : " + localJSONObject1.getString("family_name");
+				nomUsage = localJSONObject1.getString("family_name");
+			if (localJSONObject1.has("preferred_username"))
+				nomUsage = localJSONObject1.getString("preferred_username");
+			
+			if (localJSONObject1.has("siret")){
+				
+				// on se sert du nom pour fixer le siret en attendant une modif du userinfos par jalios
+				// pour pouvoir ajouter plus d'infos.
+				
+				
+				siret = localJSONObject1.getString("siret");
+				nomUsage+=".siret"+siret ;
+				
+			}
+			
+			if (localJSONObject1.has("email")) {
+				email = localJSONObject1.getString("email");
 
-			if (localJSONObject1.has("picture"))
-				picture = localJSONObject1.getString("picture");
+			}
 
-			return new UserInfos(sub, email, prenom,nomUsage, picture);
+			UserInfos ui =  new UserInfos(sub, nomUsage, prenom, email, null);
+			return ui;
 
 		} catch (Exception localException) {
 			logger.warn("Could not retrieve user informations on FranceConnect", localException);
@@ -108,6 +116,6 @@ public class FranceConnect extends bzh.jcmsplugin.fc.oauth.FranceConnect
 	}
 
 	public String getIcon() {
-		return "plugins/FranceConnectPlugin/images/fc.png";
+		return "plugins/FranceConnectPlugin/images/fce.png";
 	}
 }

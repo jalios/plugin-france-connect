@@ -15,11 +15,11 @@ import com.jalios.jcms.Channel;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
 
-import bzh.jcmsplugin.fc.oauth.FranceConnectApi;
+import bzh.jcmsplugin.fc.oauth.FranceConnectParticuliersApi;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor implements JPropertiesListener {
+public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 
 	private static final Logger logger = Logger.getLogger(FranceConnectJsonTokenExtractor.class);
 	private int timeSkewAllowance = 300;
@@ -27,18 +27,10 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor implemen
 	private String apiSecret;
 	private Channel channel = Channel.getChannel();
 
-	public FranceConnectJsonTokenExtractor() {
-		initProperties();
+	public FranceConnectJsonTokenExtractor(String apiSecret) {
+		this.apiSecret = apiSecret;
 	}
 
-	public void initProperties() {
-		this.apiSecret = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect.apiSecret");
-	}
-
-	@Override
-	public void propertiesChange(JProperties arg0) {
-		initProperties();
-	}
 
 	@Override
 	public Token extract(String response) {
@@ -66,11 +58,11 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor implemen
 			String state = req.getParameter("state");
 			if(state==null || !state.equals(storedState) ){
 				logger.error("Possible attack detected! The comparison of the state in the returned "
-						+ "ID Token to the session " + FranceConnectApi.STATE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + FranceConnectParticuliersApi.STATE_SESSION_VARIABLE + " failed. Expected "
 						+ storedState + " got " + state + ".");
 
 				throw new OAuthException("Possible  attack detected! The comparison of the state in the returned "
-						+ "ID Token to the session " + FranceConnectApi.STATE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + FranceConnectParticuliersApi.STATE_SESSION_VARIABLE + " failed. Expected "
 						+ storedState + " got " + state + ".");
 			}
 			
@@ -94,11 +86,11 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor implemen
 			String storedNonce = getStoredNonce();
 			if (!nonce.equals(storedNonce)) {
 				logger.error("Possible replay attack detected! The comparison of the nonce in the returned "
-						+ "ID Token to the session " + FranceConnectApi.NONCE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE + " failed. Expected "
 						+ storedNonce + " got " + nonce + ".");
 
 				throw new OAuthException("Possible replay attack detected! The comparison of the nonce in the returned "
-						+ "ID Token to the session " + FranceConnectApi.NONCE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE + " failed. Expected "
 						+ storedNonce + " got " + nonce + ".");
 			}
 
@@ -110,11 +102,11 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor implemen
 	}
 
 	protected static String getStoredNonce() {
-		return getStoredSessionString(FranceConnectApi.NONCE_SESSION_VARIABLE);
+		return getStoredSessionString(FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE);
 	}
 
 	protected static String getStoredState() {
-		return getStoredSessionString(FranceConnectApi.STATE_SESSION_VARIABLE);
+		return getStoredSessionString(FranceConnectParticuliersApi.STATE_SESSION_VARIABLE);
 	}
 
 	private static String getStoredSessionString(String key) {
