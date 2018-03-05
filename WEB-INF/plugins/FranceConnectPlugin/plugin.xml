@@ -43,7 +43,7 @@
 <!--                    unless you need to override default behavior      -->
 <!--                    [com.example.Plugin]                              -->
 <!--                                                                        -->
-<plugin name="FranceConnectPlugin" version="1.5" author="Benoît Moraillon - Région Bretagne" license="MIT" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
+<plugin name="FranceConnectPlugin" version="1.6" author="Benoît Moraillon - Région Bretagne" license="MIT" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
   <!-- ======================== Label and Descriptions ==================== -->
   <!--                                                                      -->
   <!-- Plugin's label and description.  Because JCMS is multilingual,       -->

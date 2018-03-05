@@ -57,6 +57,8 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 		if (bool)
 			System.setProperty("https.proxyHost", channel.getProperty("http.proxyHost"));
 		System.setProperty("https.proxyPort", channel.getProperty("http.proxyPort"));
+		System.setProperty("https.protocols", "TLSv1.2");
+		
 		final String login = channel.getProperty("http.proxy.login");
 		if (Util.notEmpty(login)) {
 			final String pwd = channel.getProperty("http.proxy.password");

@@ -39,7 +39,7 @@ public class FranceConnectParticuliers extends bzh.jcmsplugin.fc.oauth.FranceCon
 
 	private void initProperties() {
 		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticulier.scope");
-		this.userInfoUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticulier.userInfoUrl");
+		this.userInfoUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl");
 
 	}
 

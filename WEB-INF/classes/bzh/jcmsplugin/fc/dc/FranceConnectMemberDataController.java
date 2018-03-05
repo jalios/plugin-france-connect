@@ -9,8 +9,10 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcms.Data;
 import com.jalios.jcms.Group;
 import com.jalios.jcms.Member;
-import com.jalios.jcms.context.JcmsContext;
 import com.jalios.util.Util;
+
+//import bzh.jcmsplugin.cxm.mgr.CXMManager;
+//import generated.GroupProfile;
 
 
 /**
@@ -29,26 +31,33 @@ public class FranceConnectMemberDataController extends BasicDataController {
 				HttpServletRequest req = Channel.getChannel().getCurrentServletRequest();
 				
 				Member m = (Member) fcMember.getUpdateInstance();
-				
+			//	CXMManager cxmhg = CXMManager.getInstance();
 				String nom = fcMember.getLastName();
 				if (nom.contains(".siret")) {
 					String newNom = nom.substring(0,nom.indexOf(".siret"));
 					m.setLastName(newNom);
 					String siret = nom.substring(nom.indexOf(".siret")+6);
 					// A personnaliser
-				/**
-					GroupProfile gp = cxm.getGroupProfile(siret, true);
+			/**
+					GroupProfile gp = cxmhg.getGroupProfile(siret, true);
 					if (Util.notEmpty(gp)) {
 						Group g = gp.getGroupe();
 						m.addGroup(g);
 
-					}*/
+					}
+					
+					
+					*/
+					
+					
+					
+					
 
 				}
 				
 				
 				// on flaque le groupe par défaut pour les demandeurs
-				//m.addGroup(cxm.getGroupATitreParticulier());
+			//	m.addGroup(cxmhg.getGroupATitreParticulier());
 			}
 		}
 
