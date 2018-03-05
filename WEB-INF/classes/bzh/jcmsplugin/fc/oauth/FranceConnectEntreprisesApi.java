@@ -39,6 +39,8 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 	private String scope = "";
 	private String fcTokenUrl = "";
 	private String fcAuthorizeUrl = "";
+	private String fcLogoutUrl = "";
+	
 	private String apiSecret = "";
 	private Channel channel = Channel.getChannel();
 	private FranceConnectJsonTokenExtractor franceConnectJsonTokenExtractor= null;
@@ -79,6 +81,8 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 	private void initProperties() {
 		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.scope");
 		this.fcTokenUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.tokenUrl");
+		this.fcLogoutUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl");
+		
 		this.fcAuthorizeUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl");
 		this.apiSecret = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret");
 		this.franceConnectJsonTokenExtractor = new FranceConnectJsonTokenExtractor(this.apiSecret);
@@ -105,6 +109,8 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 						+ nonce + "&redirect_uri=%s",
 				new Object[] { config.getApiKey(), OAuthEncoder.encode(config.getCallback()) });
 	}
+
+	
 
 	public AccessTokenExtractor getAccessTokenExtractor() {
 		return this.franceConnectJsonTokenExtractor;
@@ -178,6 +184,9 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 		return getStoredSessionString(session, STATE_SESSION_VARIABLE);
 	}
 
+	
+	
+	
 	@Override
 	public OAuthService createService(final OAuthConfig config) {
 		return new OAuth20ServiceImpl(this, config) {

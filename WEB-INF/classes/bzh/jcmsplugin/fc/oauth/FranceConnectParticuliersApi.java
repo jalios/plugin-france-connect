@@ -40,6 +40,8 @@ public class FranceConnectParticuliersApi extends DefaultApi20 implements JPrope
 	private String fcTokenUrl = "";
 	private String fcAuthorizeUrl = "";
 	private String apiSecret = "";
+	private String fcLogoutUrl = "";
+	
 	private FranceConnectJsonTokenExtractor franceConnectJsonTokenExtractor= null;
 
 	private Channel channel = Channel.getChannel();
@@ -76,12 +78,14 @@ public class FranceConnectParticuliersApi extends DefaultApi20 implements JPrope
 	}
 
 	private void initProperties() {
+		
 		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.scope");
 		this.fcTokenUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.tokenUrl");
 		this.fcAuthorizeUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl");
 		this.apiSecret = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret");
 		this.franceConnectJsonTokenExtractor = new FranceConnectJsonTokenExtractor(this.apiSecret);
-
+		this.fcLogoutUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl");
+		
 	}
 
 	public String getAccessTokenEndpoint() {

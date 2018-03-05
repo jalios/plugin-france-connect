@@ -11,6 +11,9 @@ import com.jalios.jcms.Group;
 import com.jalios.jcms.Member;
 import com.jalios.util.Util;
 
+import bzh.jcmsplugin.cxm.mgr.CXMManager;
+import generated.GroupProfile;
+
 //import bzh.jcmsplugin.cxm.mgr.CXMManager;
 //import generated.GroupProfile;
 
@@ -31,14 +34,17 @@ public class FranceConnectMemberDataController extends BasicDataController {
 				HttpServletRequest req = Channel.getChannel().getCurrentServletRequest();
 				
 				Member m = (Member) fcMember.getUpdateInstance();
-			//	CXMManager cxmhg = CXMManager.getInstance();
+				CXMManager cxmhg = CXMManager.getInstance();
 				String nom = fcMember.getLastName();
 				if (nom.contains(".siret")) {
 					String newNom = nom.substring(0,nom.indexOf(".siret"));
 					m.setLastName(newNom);
 					String siret = nom.substring(nom.indexOf(".siret")+6);
+					// si coimpte de test, on plaque celui de Jalios;
+					if(siret.equals("73282932000074"))
+						siret ="44012603500029";
 					// A personnaliser
-			/**
+			
 					GroupProfile gp = cxmhg.getGroupProfile(siret, true);
 					if (Util.notEmpty(gp)) {
 						Group g = gp.getGroupe();
@@ -47,14 +53,14 @@ public class FranceConnectMemberDataController extends BasicDataController {
 					}
 					
 					
-					*/
+		
 					
 					
 					
 					
 
 				}
-				
+				else m.addGroup(cxmhg.getGroupATitreParticulier());
 				
 				// on flaque le groupe par défaut pour les demandeurs
 			//	m.addGroup(cxmhg.getGroupATitreParticulier());

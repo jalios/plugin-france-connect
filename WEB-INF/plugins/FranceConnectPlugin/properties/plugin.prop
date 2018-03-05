@@ -25,6 +25,7 @@ jcmsplugin.socialauth.provider.franceconnectparticuliers.scope: openid profile e
 jcmsplugin.socialauth.provider.franceconnectparticuliers.tokenUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/token
 jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/authorize
 jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/userinfo
+jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/logout
 
 jcmsplugin.socialauth.provider.franceconnectentreprises.class: bzh.jcmsplugin.fc.provider.FranceConnectEntreprises
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey: 
@@ -34,3 +35,7 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.scope: openid profile em
 jcmsplugin.socialauth.provider.franceconnectentreprises.tokenUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/token
 jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/authorize
 jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/userinfo
+jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/logout
+
+
+channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$

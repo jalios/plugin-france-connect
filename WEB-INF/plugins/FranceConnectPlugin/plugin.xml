@@ -43,12 +43,12 @@
 <!--                    unless you need to override default behavior      -->
 <!--                    [com.example.Plugin]                              -->
 <!--                                                                        -->
-<plugin name="FranceConnectPlugin" version="1.6" author="Benoît Moraillon - Région Bretagne" license="MIT" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
+<plugin name="FranceConnectPlugin" version="1.7" author="Benoît Moraillon - Région Bretagne" license="MIT" initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
   <!-- ======================== Label and Descriptions ==================== -->
   <!--                                                                      -->
   <!-- Plugin's label and description.  Because JCMS is multilingual,       -->
   <!-- Plugins should be multilingual and declared, at least, in English    -->
-  <!-- and French.                                                          -->
+  <!-- and French.                                                           -->
   <!--                                                                      -->
   <!-- label              An internationalized label of the plugin.         -->
   <!--                                                                      -->
@@ -139,6 +139,11 @@
     <java package="com.example.jcmsplugin.franceconnect" />
   </java-classes>
  -->
+  <java-classes>
+    <java package="bzh.jcmsplugin.fc" />
+    <java class="com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler" />
+    
+  </java-classes>
  <jars>
  	<jar path="jjwt-0.7.0.jar" />
  	<jar path="jackson-annotations-2.8.0.jar" />
@@ -146,11 +151,6 @@
  	<jar path="jackson-databind-2.8.2.jar" />
  	
  </jars>   
- 
- <java-classes>
-    <java package="bzh.jcmsplugin.fc" />
-    
-  </java-classes>
  
   <!-- ========================== Plugin Components ======================= -->
   <!--                                                                      -->
@@ -452,8 +452,11 @@
     <directory path="properties" />
   </private-files>
   <public-files>
+     <file path="jsp/doLogoutButton.jsp" include="SITE_TOPBAR_MENU_LEFT" />
+  
     <directory path="images" />
     <directory path="docs" />
+    <directory path="jsp" />
     
   </public-files>
 </plugin>

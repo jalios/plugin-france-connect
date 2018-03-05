@@ -6,6 +6,8 @@ jcmsplugin.socialauth.provider.franceconnectparticuliers.scope:FC Particuliers S
 jcmsplugin.socialauth.provider.franceconnectparticuliers.tokenUrl:FC Particuliers Token URL
 jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl:FC Particuliers Authorize URL
 jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl:FC Particuliers UserInfo URL
+jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl:FC Particuliers Logout URL
+
 
 jcmsplugin.socialauth.provider.franceconnectentreprises.class:FC Enterprises Provider class
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey:FC Enterprises Client ID
@@ -15,5 +17,6 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.scope:FC Enterprises Sco
 jcmsplugin.socialauth.provider.franceconnectentreprises.tokenUrl:FC Enterprises Token URL
 jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl:FC Enterprises Authorize URL
 jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl:FC Enterprises UserInfo URL
+jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl:FC Enterprises Logout URL
 
 
