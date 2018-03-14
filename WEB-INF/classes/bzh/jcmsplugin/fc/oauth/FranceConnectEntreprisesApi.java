@@ -2,9 +2,7 @@ package bzh.jcmsplugin.fc.oauth;
 
 import java.math.BigInteger;
 import java.net.Authenticator;
-import java.net.HttpURLConnection;
 import java.net.PasswordAuthentication;
-import java.net.URL;
 import java.security.SecureRandom;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +24,7 @@ import org.scribe.utils.OAuthEncoder;
 import org.scribe.utils.Preconditions;
 
 import com.jalios.jcms.Channel;
+import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
 import com.jalios.util.Util;
@@ -34,7 +33,6 @@ import bzh.jcmsplugin.fc.extractors.FranceConnectJsonTokenExtractor;
 
 public class FranceConnectEntreprisesApi extends DefaultApi20 implements JPropertiesListener {
 	private static final Logger logger = Logger.getLogger(FranceConnectEntreprisesApi.class);
-	public final static String STATE_SESSION_VARIABLE = "state";
 	public final static String NONCE_SESSION_VARIABLE = "nonce";
 	private String scope = "";
 	private String fcTokenUrl = "";
@@ -101,11 +99,8 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 		// this value comes back in the id token and is checked there
 		String nonce = createNonce(session);
 
-		// this value comes back in the auth code response
-		String state = createState(session);
-
 		return String.format(
-				this.fcAuthorizeUrl + "?client_id=%s&response_type=code&scope=" + scope + "&state=" + state + "&nonce="
+				this.fcAuthorizeUrl + "?client_id=%s&response_type=code&scope=" + scope + "&nonce="
 						+ nonce + "&redirect_uri=%s",
 				new Object[] { config.getApiKey(), OAuthEncoder.encode(config.getCallback()) });
 	}
@@ -161,32 +156,6 @@ public class FranceConnectEntreprisesApi extends DefaultApi20 implements JProper
 		return getStoredSessionString(session, NONCE_SESSION_VARIABLE);
 	}
 
-	/**
-	 * Create a cryptographically random state and store it in the session
-	 * 
-	 * @param session
-	 * @return
-	 */
-	protected static String createState(HttpSession session) {
-		String state = new BigInteger(50, new SecureRandom()).toString(16);
-		session.setAttribute(STATE_SESSION_VARIABLE, state);
-
-		return state;
-	}
-
-	/**
-	 * Get the state we stored in the session
-	 * 
-	 * @param session
-	 * @return
-	 */
-	protected static String getStoredState(HttpSession session) {
-		return getStoredSessionString(session, STATE_SESSION_VARIABLE);
-	}
-
-	
-	
-	
 	@Override
 	public OAuthService createService(final OAuthConfig config) {
 		return new OAuth20ServiceImpl(this, config) {

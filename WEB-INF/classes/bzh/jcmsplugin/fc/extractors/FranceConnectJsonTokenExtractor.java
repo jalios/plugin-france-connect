@@ -10,10 +10,9 @@ import org.scribe.extractors.JsonTokenExtractor;
 import org.scribe.model.Token;
 import org.scribe.utils.Preconditions;
 
-import com.google.common.base.Strings;
 import com.jalios.jcms.Channel;
-import com.jalios.util.JProperties;
-import com.jalios.util.JPropertiesListener;
+import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
+import com.jalios.util.Util;
 
 import bzh.jcmsplugin.fc.oauth.FranceConnectParticuliersApi;
 import io.jsonwebtoken.Claims;
@@ -58,11 +57,11 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 			String state = req.getParameter("state");
 			if(state==null || !state.equals(storedState) ){
 				logger.error("Possible attack detected! The comparison of the state in the returned "
-						+ "ID Token to the session " + FranceConnectParticuliersApi.STATE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + SocialAuthAuthenticationHandler.OAUTH_STATE + " failed. Expected "
 						+ storedState + " got " + state + ".");
 
 				throw new OAuthException("Possible  attack detected! The comparison of the state in the returned "
-						+ "ID Token to the session " + FranceConnectParticuliersApi.STATE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + SocialAuthAuthenticationHandler.OAUTH_STATE + " failed. Expected "
 						+ storedState + " got " + state + ".");
 			}
 			
@@ -76,7 +75,7 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 			
 			// compare the nonce to our stored claim
 			String nonce = (String) claims.get("nonce");
-			if (Strings.isNullOrEmpty(nonce)) {
+			if (Util.isEmpty(nonce)) {
 
 				logger.error("ID token did not contain a nonce claim.");
 
@@ -105,9 +104,15 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 		return getStoredSessionString(FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE);
 	}
 
-	protected static String getStoredState() {
-		return getStoredSessionString(FranceConnectParticuliersApi.STATE_SESSION_VARIABLE);
-	}
+  /**
+   * Get the state that was stored in the session by the SocialAuthHandler
+   * 
+   * @param session
+   * @return
+   */
+  protected static String getStoredState() {
+    return getStoredSessionString(SocialAuthAuthenticationHandler.OAUTH_STATE);
+  }
 
 	private static String getStoredSessionString(String key) {
 		HttpServletRequest req = Channel.getChannel().getCurrentServletRequest();

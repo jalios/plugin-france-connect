@@ -1,7 +1,6 @@
 package bzh.jcmsplugin.fc.provider;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
 import org.scribe.builder.api.Api;
 import org.scribe.model.OAuthRequest;
@@ -14,7 +13,6 @@ import com.jalios.jcmsplugin.socialauth.SocialAuthOAuthProvider;
 import com.jalios.jcmsplugin.socialauth.UserInfos;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
-import com.jalios.util.Util;
 
 import bzh.jcmsplugin.fc.oauth.FranceConnectParticuliersApi;
 
@@ -40,11 +38,9 @@ public class FranceConnectParticuliers extends bzh.jcmsplugin.fc.oauth.FranceCon
 	private void initProperties() {
 		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticulier.scope");
 		this.userInfoUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl");
-
 	}
 
 	public String getScope() {
-
 		return scope;
 	}
 

@@ -2,17 +2,15 @@ package bzh.jcmsplugin.fc.dc;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import org.apache.log4j.Logger;
 
 import com.jalios.jcms.BasicDataController;
-import com.jalios.jcms.Channel;
 import com.jalios.jcms.Data;
-import com.jalios.jcms.Group;
 import com.jalios.jcms.Member;
+import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
+import com.jalios.jcmsplugin.socialauth.UserInfos;
 import com.jalios.util.Util;
 
-import bzh.jcmsplugin.cxm.mgr.CXMManager;
-import generated.GroupProfile;
 
 //import bzh.jcmsplugin.cxm.mgr.CXMManager;
 //import generated.GroupProfile;
@@ -26,47 +24,41 @@ import generated.GroupProfile;
  */
 public class FranceConnectMemberDataController extends BasicDataController {
 
-	@Override
-	public void beforeWrite(Data data, int op, Member opMember, Map ctx) {
-		if (data instanceof Member && (op == super.OP_CREATE || op == super.OP_UPDATE)) {
-			Member fcMember = (Member) data;
-			if (fcMember.getLogin().startsWith("franceconnect")) {
-				HttpServletRequest req = Channel.getChannel().getCurrentServletRequest();
-				
-				Member m = (Member) fcMember.getUpdateInstance();
-				CXMManager cxmhg = CXMManager.getInstance();
-				String nom = fcMember.getLastName();
-				if (nom.contains(".siret")) {
-					String newNom = nom.substring(0,nom.indexOf(".siret"));
-					m.setLastName(newNom);
-					String siret = nom.substring(nom.indexOf(".siret")+6);
-					// si coimpte de test, on plaque celui de Jalios;
-					if(siret.equals("73282932000074"))
-						siret ="44012603500029";
-					// A personnaliser
-			
-					GroupProfile gp = cxmhg.getGroupProfile(siret, true);
-					if (Util.notEmpty(gp)) {
-						Group g = gp.getGroupe();
-						m.addGroup(g);
+  private static final Logger logger = Logger.getLogger(FranceConnectMemberDataController.class);
 
-					}
-					
-					
-		
-					
-					
-					
-					
+  @Override
+  public void beforeWrite(Data data, int op, Member opMember, Map ctx) {
+    if (data instanceof Member && (op == OP_CREATE || op == OP_UPDATE)) {
+      Member mbr = (Member) data;
+      if (mbr.getLogin().startsWith("franceconnect")) {
+        UserInfos userInfos = (ctx != null) ? (UserInfos) ctx.get(SocialAuthAuthenticationHandler.SOCIALAUTH_USER_INFOS) : null;
+        String siret = (userInfos != null) ? userInfos.getData("siret") : null;
+        if (Util.notEmpty(siret)) {
 
-				}
-				else m.addGroup(cxmhg.getGroupATitreParticulier());
-				
-				// on flaque le groupe par défaut pour les demandeurs
-			//	m.addGroup(cxmhg.getGroupATitreParticulier());
-			}
-		}
+          logger.info("Member creation/update through FranceConnect Enterprise, siret = " + siret);
+          
+          // si compte de test/demo FC, on plaque celui de Jalios;
+          if (siret.equals("73282932000074")) {
+            siret = "44012603500029";
+          }
 
-	}
+          // A personnaliser
+          /*
+          CXMManager cxmhg = CXMManager.getInstance();
+          GroupProfile gp = cxmhg.getGroupProfile(siret, true);
+          if (Util.notEmpty(gp)) {
+            Group g = gp.getGroupe();
+            mbr.addGroup(g);
+          } else {
+            // on flaque le groupe par défaut pour les demandeurs
+            mbr.addGroup(cxmhg.getGroupATitreParticulier());
+          }
+          */
 
+        }
+      }
+
+    }
+  }
+  
 }

@@ -1,11 +1,9 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file='/jcore/doInitPage.jspf'%>
+<%@ page contentType="text/html; charset=UTF-8"%><%
+%><%@ include file='/jcore/doInitPage.jspf'%><%
 
-<%
-
-if(loggedMember!=null && loggedMember.getLogin().startsWith("franceconnect")){
+if (loggedMember!=null && loggedMember.getLogin().startsWith("franceconnect")) {
 	
-	jcmsContext.addJavaScript("http://fcp.integ01.dev-franceconnect.fr/js/franceconnect.js");
+	jcmsContext.addJavaScript("https://fcp.integ01.dev-franceconnect.fr/js/franceconnect.js");
 %>
 <style>
 #fconnect-profile > a {
@@ -19,6 +17,6 @@ if(loggedMember!=null && loggedMember.getLogin().startsWith("franceconnect")){
     background-size: 20px;
 }
 </style>
-<div id="fconnect-profile" data-fc-logout-url="plugins/FranceConnectPlugin/jsp/doLogout.jsp" class="topbar-item" ><a href="#" > Se déconnecter</a></div>
+<div id="fconnect-profile" data-fc-logout-url="<%= ResourceHelper.getLogout() %>" class="topbar-item" ><a href="#" title="FranceConnect"><span class="glyph-alt">FranceConnect</span></a></div>
 
 <%} %>

@@ -1,13 +1,12 @@
 package bzh.jcmsplugin.fc.oauth;
 
+import org.scribe.builder.api.Api;
+
 import com.jalios.jcms.Channel;
 import com.jalios.jcmsplugin.oauth.BasicOAuthProvider;
 import com.jalios.jcmsplugin.oauth.OAuthProvider;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
-
-import org.scribe.builder.api.Api;
-import org.scribe.builder.api.YahooApi;
 
 public abstract class FranceConnectParticuliers extends BasicOAuthProvider implements OAuthProvider, JPropertiesListener {
 
@@ -17,12 +16,9 @@ public abstract class FranceConnectParticuliers extends BasicOAuthProvider imple
 	private String grantType = "";
 
 	public FranceConnectParticuliers(){
-		
 		super();
 		initProperties();
 	}
-	
-	
 	
 	@Override
 	public void propertiesChange(JProperties arg0) {
@@ -32,7 +28,6 @@ public abstract class FranceConnectParticuliers extends BasicOAuthProvider imple
 	private void initProperties() {
 		this.scope = Channel.getChannel().getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.scope");
 		this.grantType = Channel.getChannel().getProperty("jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl");
-
 	}
 
 	
@@ -50,13 +45,11 @@ public abstract class FranceConnectParticuliers extends BasicOAuthProvider imple
 
 	@Override
 	public String getGrantType() {
-		// TODO Auto-generated method stub
 		return this.grantType;
 	}
 
 	@Override
 	public String getScope() {
-		// TODO Auto-generated method stub
 		return this.scope;
 	}
 
