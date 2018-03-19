@@ -1,23 +1,5 @@
-
-# ----------------------------------------------------------------------
-# Templates {usage = jcmsplugin.plugin.sample}
-# ----------------------------------------------------------------------
-
-# Declaration of a new Usage
-# jcms.resource.default-template.{jcmsplugin.plugin.sample}: custom/jcms/doSampleDisplay.jsp
-
-# Declaration of a new Usage for FullDisplay
-# I18N to cut&past in en.prop / fr.prop
-# ui.editportlet.usage.{jcmsplugin.plugin.sample}: Usage label
-
-# Declaration of a new Usage for Skin
-# I18N to cut&past in en.prop / fr.prop
-# ui.editportlet.usage.skin.{jcmsplugin.plugin.sample}: Usage label for skin
-
-# LESS
-# channel.less.plugins/{Name}/css/plugin.css:    plugins/{Name}/css/plugin.less
-
-jcmsplugin.socialauth.provider.franceconnectparticuliers.class: bzh.jcmsplugin.fc.provider.FranceConnectParticuliers
+# Particuliers
+jcmsplugin.socialauth.provider.franceconnectparticuliers.class: bzh.jcmsplugin.fc.oauth.FranceConnectParticuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey: 
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret: 
 jcmsplugin.socialauth.provider.franceconnectparticuliers.granttype: authorization_code
@@ -27,7 +9,8 @@ jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl: https://f
 jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/userinfo
 jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl: https://fcp.integ01.dev-franceconnect.fr/api/v1/logout
 
-jcmsplugin.socialauth.provider.franceconnectentreprises.class: bzh.jcmsplugin.fc.provider.FranceConnectEntreprises
+# Entreprises
+jcmsplugin.socialauth.provider.franceconnectentreprises.class: bzh.jcmsplugin.fc.oauth.FranceConnectEntreprises
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey: 
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret: 
 jcmsplugin.socialauth.provider.franceconnectentreprises.granttype: authorization_code
@@ -37,10 +20,10 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl: https://fc
 jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/userinfo
 jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/logout
 
-
+# Authorize external redirection to FranceConnect domain
 channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$
 
-
+# Icons
 icon.jcmsplugin-fc.login-particuliers: plugins/FranceConnectPlugin/images/FCboutons-10.png
 icon.jcmsplugin-fc.login-entreprises: plugins/FranceConnectPlugin/images/FCboutons-11.png
 

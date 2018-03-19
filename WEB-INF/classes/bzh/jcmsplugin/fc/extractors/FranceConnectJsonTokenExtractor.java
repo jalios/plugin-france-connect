@@ -14,7 +14,7 @@ import com.jalios.jcms.Channel;
 import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
 import com.jalios.util.Util;
 
-import bzh.jcmsplugin.fc.oauth.FranceConnectParticuliersApi;
+import bzh.jcmsplugin.fc.oauth.AbstractFranceConnectApi;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
@@ -24,7 +24,6 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 	private int timeSkewAllowance = 300;
 
 	private String apiSecret;
-	private Channel channel = Channel.getChannel();
 
 	public FranceConnectJsonTokenExtractor(String apiSecret) {
 		this.apiSecret = apiSecret;
@@ -37,7 +36,6 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 		
 		Preconditions.checkEmptyString(response, "Cannot extract a token from a null or empty String");
 		String idTokenValue;
-		String refreshTokenValue;
 
 		try {
 			JSONObject jsonRoot = new JSONObject(response);
@@ -49,9 +47,6 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 				throw new OAuthException("Token Endpoint did not return an id_token");
 			}
 
-			if (jsonRoot.has("refresh_token")) {
-				refreshTokenValue = jsonRoot.getString("refresh_token");
-			}
 			String storedState = getStoredState();
 			HttpServletRequest req = Channel.getChannel().getCurrentServletRequest();
 			String state = req.getParameter("state");
@@ -85,11 +80,11 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 			String storedNonce = getStoredNonce();
 			if (!nonce.equals(storedNonce)) {
 				logger.error("Possible replay attack detected! The comparison of the nonce in the returned "
-						+ "ID Token to the session " + FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + AbstractFranceConnectApi.NONCE_SESSION_VARIABLE + " failed. Expected "
 						+ storedNonce + " got " + nonce + ".");
 
 				throw new OAuthException("Possible replay attack detected! The comparison of the nonce in the returned "
-						+ "ID Token to the session " + FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE + " failed. Expected "
+						+ "ID Token to the session " + AbstractFranceConnectApi.NONCE_SESSION_VARIABLE + " failed. Expected "
 						+ storedNonce + " got " + nonce + ".");
 			}
 
@@ -101,7 +96,7 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 	}
 
 	protected static String getStoredNonce() {
-		return getStoredSessionString(FranceConnectParticuliersApi.NONCE_SESSION_VARIABLE);
+		return getStoredSessionString(AbstractFranceConnectApi.NONCE_SESSION_VARIABLE);
 	}
 
   /**

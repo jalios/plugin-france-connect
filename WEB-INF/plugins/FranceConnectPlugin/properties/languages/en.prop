@@ -1,4 +1,4 @@
-jcmsplugin.socialauth.provider.franceconnectparticuliers.class: FC Particuliers Provider class
+# Particuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey: FC Particuliers Client ID
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret: FC Particuliers Client Secret
 jcmsplugin.socialauth.provider.franceconnectparticuliers.granttype: FC Particuliers GrantType
@@ -9,7 +9,7 @@ jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl: FC Particu
 jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl: FC Particuliers Logout URL
 
 
-jcmsplugin.socialauth.provider.franceconnectentreprises.class: FC Enterprises Provider class
+# Entreprises
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey: FC Enterprises Client ID
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret: FC Enterprises Client Secret
 jcmsplugin.socialauth.provider.franceconnectentreprises.granttype: FC Enterprises GrantType
