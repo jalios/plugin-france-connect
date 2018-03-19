@@ -142,8 +142,8 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
         Object keyObj = entry.getKey();
         Object valueObj = entry.getValue();
         if (keyObj instanceof String && valueObj instanceof String) {
-          String key = Util.getString(entry.getKey(), "");
-          String value = Util.getString(entry.getValue(), "");
+          String key = Util.getString(keyObj, "");
+          String value = Util.getString(valueObj, "");
           ui.putData(key, value);
         }
       }
