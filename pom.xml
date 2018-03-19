@@ -58,15 +58,11 @@
     </dependency>
      -->
     
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
     
-    <dependency>
-      <groupId>org.jabsorb</groupId>
-      <artifactId>jabsorb</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jabsorb</groupId>
-      <artifactId>jabsorb</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.scribe</groupId>
       <artifactId>scribe</artifactId>

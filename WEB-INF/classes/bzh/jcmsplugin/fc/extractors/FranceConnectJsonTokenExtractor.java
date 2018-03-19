@@ -1,15 +1,18 @@
 package bzh.jcmsplugin.fc.extractors;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
 import org.scribe.exceptions.OAuthException;
 import org.scribe.extractors.JsonTokenExtractor;
 import org.scribe.model.Token;
 import org.scribe.utils.Preconditions;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalios.jcms.Channel;
 import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
 import com.jalios.util.Util;
@@ -35,14 +38,11 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 		
 		
 		Preconditions.checkEmptyString(response, "Cannot extract a token from a null or empty String");
-		String idTokenValue;
+		
 
 		try {
-			JSONObject jsonRoot = new JSONObject(response);
-
-			if (jsonRoot.has("id_token")) {
-				idTokenValue = jsonRoot.getString("id_token");
-			} else {
+		  final String idTokenValue = getIdToken(response);
+			if (Util.isEmpty(idTokenValue)) {
 				logger.error("Token Endpoint did not return an id_token");
 				throw new OAuthException("Token Endpoint did not return an id_token");
 			}
@@ -122,5 +122,41 @@ public class FranceConnectJsonTokenExtractor extends JsonTokenExtractor  {
 		}
 	}
 
+	/**
+	 * Read JSON response as java HashMap.
+	 * @param json a JSON content, may be null
+	 * @return a Map, may return null.
+	 * @since fc-1.9
+	 */
+  public static Map<?,?> json2map(String json) {
+    try {
+      if (json == null) {
+        return null;
+      }
+      // Process empty JSON in a faster way 
+      if ("{}".equals(json)) {
+        return new HashMap<Object,Object>();
+      }
+      return new ObjectMapper().readValue(json, HashMap.class);
+    } catch (Exception ex) {
+      logger.debug("json2map: An exception occured with json: " + json, ex);
+      return null;
+    }
+  }
+  
+	/**
+	 * Parse the specified JSON response to read the id_token.
+	 * @param jsonResponse the JSON response 
+	 * @return an id_token value, may return null
+   * @since fc-1.9
+	 */
+  public static String getIdToken(String jsonResponse) { 
+	  Map<?,?> map = json2map(jsonResponse);
 
+	  if (map != null) {
+	    return Util.getString(map.get("id_token"), null);
+	  }
+	  
+	  return null;
+  }
 }

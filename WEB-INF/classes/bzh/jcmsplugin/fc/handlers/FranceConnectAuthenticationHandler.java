@@ -5,8 +5,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.scribe.model.Token;
 import org.scribe.utils.OAuthEncoder;
 
@@ -17,6 +15,7 @@ import com.jalios.jcmsplugin.socialauth.SocialAuthOAuthProvider;
 import com.jalios.util.ServletUtil;
 import com.jalios.util.Util;
 
+import bzh.jcmsplugin.fc.extractors.FranceConnectJsonTokenExtractor;
 import bzh.jcmsplugin.fc.oauth.AbstractFranceConnectProvider;
 
 /**
@@ -110,21 +109,11 @@ public class FranceConnectAuthenticationHandler extends AuthenticationHandler {
     }
 
     // Extract ID token from member token
-    String idTokenValue = "";
-    try {
-      JSONObject jsonRoot = new JSONObject(memberToken.getRawResponse());
-      
-      if (!jsonRoot.has("id_token")) {
-        if (logger.isDebugEnabled()) {
-          logger.debug("Missing id_token. Cannot logout from " + fcProvider.getName());
-        }
-        return;
+    final String idTokenValue = FranceConnectJsonTokenExtractor.getIdToken(memberToken.getRawResponse());
+    if (Util.isEmpty(idTokenValue)) {
+      if (logger.isDebugEnabled()) {
+        logger.debug("Missing id_token. Cannot logout from " + fcProvider.getName());
       }
-      
-      idTokenValue = jsonRoot.getString("id_token");
-      
-    } catch (JSONException jsonEx) {
-      logger.warn("Could not retrieve id_token. Cannot logout from " + fcProvider.getName(), jsonEx);
       return;
     }
     

@@ -1,7 +1,8 @@
 package bzh.jcmsplugin.fc.oauth;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
 import org.scribe.builder.api.Api;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
@@ -15,8 +16,10 @@ import com.jalios.jcmsplugin.socialauth.SocialAuthOAuthProvider;
 import com.jalios.jcmsplugin.socialauth.UserInfos;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
+import com.jalios.util.Util;
 
 import bzh.jcmsplugin.fc.FranceConnectType;
+import bzh.jcmsplugin.fc.extractors.FranceConnectJsonTokenExtractor;
 
 /**
  * Abstract implementation for both OAuthProvider and SocialAuthOAuthProvider for FranceConnect.
@@ -111,7 +114,6 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
   
   public UserInfos getUserInfos(Token paramToken) {
     try {
-
       final OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, this.grantType + "?schema=openid");
       oauthRequest.addHeader("Authorization", "Bearer " + paramToken.getToken());
 
@@ -121,36 +123,29 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
         logger.trace("ResponseBody from FranceConnect : " + jsonResponseStr);
       }
 
-      JSONObject jsonObject = new JSONObject(jsonResponseStr);
-      String nomUsage = "";
-      String email = "";
-      String prenom = "";
-      String sub = "";
-      String siret = "";
-      if (jsonObject.has("sub")) {
-        sub = jsonObject.getString("sub"); 
-      }
-      if (jsonObject.has("given_name")) {
-        prenom = jsonObject.getString("given_name");
-      }
-      if (jsonObject.has("family_name")) {
-        nomUsage = jsonObject.getString("family_name");
-      }
-      if (jsonObject.has("preferred_username")) {
-        nomUsage = jsonObject.getString("preferred_username");
-      }
-      if (jsonObject.has("email")) {
-        email = jsonObject.getString("email");
-
+      final Map<?,?> map = FranceConnectJsonTokenExtractor.json2map(jsonResponseStr);
+      if (map == null) {
+        logger.warn("Could not read user informations on FranceConnect, response was : " + jsonResponseStr);
+        return null;
       }
       
-      UserInfos ui = new UserInfos(sub, nomUsage, prenom, email, null);
+      final String login = Util.getString(map.get("sub"), "");
+      final String nomUsage = Util.getString(map.get("family_name"), "");
+      final String prenom = Util.getString(map.get("given_name"), "");
+      final String email = Util.getString(map.get("email"), "");
       
-      // TODO : the siret is specific to entreprise, make it generic
-      // TODO : implement mapping between json object and UserInfos data
-      if (jsonObject.has("siret")) {
-        siret = jsonObject.getString("siret");
-        ui.putData("siret", siret);
+      UserInfos ui = new UserInfos(login, nomUsage, prenom, email, null);
+      
+      // Recopy all element from the response
+      // For example, when used with FranceConnect entreprise, it will include the siret number 
+      for (Map.Entry<?,?> entry : map.entrySet()) {
+        Object keyObj = entry.getKey();
+        Object valueObj = entry.getValue();
+        if (keyObj instanceof String && valueObj instanceof String) {
+          String key = Util.getString(entry.getKey(), "");
+          String value = Util.getString(entry.getValue(), "");
+          ui.putData(key, value);
+        }
       }
 
       return ui;
