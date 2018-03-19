@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jalios</groupId>
+    <artifactId>jalios-parent</artifactId>
+    <version>10.0.0-SNAPSHOT</version>
+    <relativePath/>
+  </parent>
+  <groupId>bzh.jcmsplugin</groupId>
+  <artifactId>fc</artifactId>
+  <version>1.9-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>FranceConnect Plugin for JCMS</name>
+  <description>FranceConnect Plugin</description>
+  <url>https://community.jalios.com/plugin/FranceConnect</url>
+  <dependencies>
+  
+    <dependency>
+      <groupId>com.jalios.jcmsplugin</groupId>
+      <artifactId>oauth</artifactId>
+      <version>1.2-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.jalios.jcmsplugin</groupId>
+      <artifactId>socialauth</artifactId>
+      <version>1.2-SNAPSHOT</version>
+      <type>pom</type>
+    </dependency>
+    
+    <!--
+      JSON Web Token (aka jjwt)
+      https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt 
+    -->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.7.0</version>
+    </dependency>
+    
+    <!-- Transitive dependency required by jjwt -->
+    <!-- 
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+     -->
+    <!-- Transitive dependency required by jackson-databind -->
+    <!-- 
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+    </dependency>
+     -->
+    
+    
+    <dependency>
+      <groupId>org.jabsorb</groupId>
+      <artifactId>jabsorb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jabsorb</groupId>
+      <artifactId>jabsorb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.scribe</groupId>
+      <artifactId>scribe</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.jalios</groupId>
+      <artifactId>jaliosutil</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.jalios</groupId>
+      <artifactId>jcms-core</artifactId>
+      <type>pom</type>
+    </dependency>
+    
+  </dependencies>
+</project>
