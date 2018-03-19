@@ -1,8 +1,6 @@
 package bzh.jcmsplugin.fc.oauth;
 
 import java.math.BigInteger;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.security.SecureRandom;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +22,8 @@ import org.scribe.utils.OAuthEncoder;
 import org.scribe.utils.Preconditions;
 
 import com.jalios.jcms.Channel;
-import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
-import com.jalios.util.Util;
 
 import bzh.jcmsplugin.fc.extractors.FranceConnectJsonTokenExtractor;
 
@@ -47,28 +43,6 @@ public class FranceConnectParticuliersApi extends DefaultApi20 implements JPrope
 	public FranceConnectParticuliersApi() {
 		super();
 		initProperties();
-		initSSLProxy();
-	}
-
-	public void initSSLProxy() {
-		Channel channel = Channel.getChannel();
-		boolean bool = channel.getBooleanProperty("http.proxy.enabled",
-				Util.notEmpty(channel.getProperty("http.proxyHost", "")));
-
-		if (bool)
-			System.setProperty("https.proxyHost", channel.getProperty("http.proxyHost"));
-		System.setProperty("https.proxyPort", channel.getProperty("http.proxyPort"));
-		final String login = channel.getProperty("http.proxy.login");
-		if (Util.notEmpty(login)) {
-			final String pwd = channel.getProperty("http.proxy.password");
-			Authenticator.setDefault(new Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-
-					return new PasswordAuthentication(login, Util.reveal(pwd).toCharArray());
-				}
-			});
-
-		}
 	}
 
 	public void propertiesChange(JProperties paramJProperties) {
