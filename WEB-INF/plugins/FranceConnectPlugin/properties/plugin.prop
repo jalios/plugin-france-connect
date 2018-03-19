@@ -20,6 +20,11 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl: https://fc
 jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/userinfo
 jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl: https://fce.integ01.dev-franceconnect.fr/api/v1/logout
 
+# Other options
+jcmsplugin.socialauth.provider.kit.enabled.boolean: false
+jcmsplugin.socialauth.provider.kit.url: https://fcp.integ01.dev-franceconnect.fr/js/franceconnect.js
+
+
 # Authorize external redirection to FranceConnect domain
 channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$
 

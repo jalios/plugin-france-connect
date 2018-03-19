@@ -34,7 +34,7 @@
   </private-files>
   
   <public-files>
-    <file path="jsp/doLogoutButton.jsp" include="SITE_TOPBAR_MENU_LEFT" />
+    <file path="jsp/doFranceConnectKit.jsp" include="SITE_TOPBAR_MENU_LEFT" />
   
     <directory path="images" />
     <directory path="docs" />

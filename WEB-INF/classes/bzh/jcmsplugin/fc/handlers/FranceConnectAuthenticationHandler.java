@@ -127,4 +127,18 @@ public class FranceConnectAuthenticationHandler extends AuthenticationHandler {
     ctxt.sendRedirect(redirect);
   }
 
+  
+  /**
+   * Check if the current session is a session where the user signed in using FranceConnect.
+   * @param session the current HttpSession
+   * @return true if current session is a FranceConnect session, false otherwise
+   * @since fc-1.9
+   */
+  public static boolean isFranceConnectSession(HttpSession session) {
+    if (session == null) {
+      return false;
+    }
+    SocialAuthOAuthProvider socialAuthProvider = SocialAuthAuthenticationHandler.getInstance().getProviders().getProviderFromSession(session);
+    return socialAuthProvider instanceof AbstractFranceConnectProvider;
+  }
 }
