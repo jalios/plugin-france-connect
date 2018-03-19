@@ -1,3 +1,22 @@
+# Particuliers
+jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey:       FC Particuliers - Identifiant client
+jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret:    FC Particuliers - Clé secrète
+jcmsplugin.socialauth.provider.franceconnectparticuliers.scope:        FC Particuliers - Données usager - Scope
+jcmsplugin.socialauth.provider.franceconnectparticuliers.tokenUrl:     FC Particuliers - Endpoint URL - Token
+jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl: FC Particuliers - Endpoint URL - Authorize
+jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl:  FC Particuliers - Endpoint URL - UserInfo
+jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl:    FC Particuliers - Endpoint URL - Logout
+
+
+# Entreprises
+jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey:       FC Enterprises - Identifiant client
+jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret:    FC Enterprises - Clé secrète
+jcmsplugin.socialauth.provider.franceconnectentreprises.scope:        FC Enterprises - Données usager - Scope
+jcmsplugin.socialauth.provider.franceconnectentreprises.tokenUrl:     FC Enterprises - Endpoint URL - Token
+jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl: FC Enterprises - Endpoint URL - Authorize
+jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl:  FC Enterprises - Endpoint URL - UserInfo
+jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl:    FC Enterprises - Endpoint URL - Logout
+
 # Icon label (for alternative text)
 icon.jcmsplugin-fc.login-particuliers: S'identifier avec FranceConnect Particuliers
 icon.jcmsplugin-fc.login-entreprises: S'identifier avec FranceConnect Entreprises
