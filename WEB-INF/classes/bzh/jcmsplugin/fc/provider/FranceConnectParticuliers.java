@@ -95,7 +95,7 @@ public class FranceConnectParticuliers extends bzh.jcmsplugin.fc.oauth.FranceCon
 		return null;
 	}
 
-	public String getIcon() {
-		return "plugins/FranceConnectPlugin/images/fcp.png";
-	}
+  public String getIcon() {
+    return "jcmsplugin-fc.login-particuliers";
+  }
 }

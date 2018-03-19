@@ -39,3 +39,8 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl: https://fce.i
 
 
 channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$
+
+
+icon.jcmsplugin-fc.login-particuliers: plugins/FranceConnectPlugin/images/FCboutons-10.png
+icon.jcmsplugin-fc.login-entreprises: plugins/FranceConnectPlugin/images/FCboutons-11.png
+

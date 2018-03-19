@@ -136,6 +136,6 @@ public class FranceConnectEntreprises extends bzh.jcmsplugin.fc.oauth.FranceConn
 	}
 
 	public String getIcon() {
-		return "plugins/FranceConnectPlugin/images/fce.png";
+		return "jcmsplugin-fc.login-entreprises";
 	}
 }

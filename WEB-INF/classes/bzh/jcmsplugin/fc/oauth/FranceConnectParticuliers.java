@@ -40,7 +40,7 @@ public abstract class FranceConnectParticuliers extends BasicOAuthProvider imple
 	}
 
 	public String getName() {
-		return "FranceConnectParticuliers"; 
+		return "FranceConnect Particuliers"; 
 	}
 
 	@Override

@@ -1,13 +1,12 @@
 package bzh.jcmsplugin.fc.oauth;
 
+import org.scribe.builder.api.Api;
+
 import com.jalios.jcms.Channel;
 import com.jalios.jcmsplugin.oauth.BasicOAuthProvider;
 import com.jalios.jcmsplugin.oauth.OAuthProvider;
 import com.jalios.util.JProperties;
 import com.jalios.util.JPropertiesListener;
-
-import org.scribe.builder.api.Api;
-import org.scribe.builder.api.YahooApi;
 
 public abstract class FranceConnectEntreprises extends BasicOAuthProvider implements OAuthProvider, JPropertiesListener {
 
@@ -45,7 +44,7 @@ public abstract class FranceConnectEntreprises extends BasicOAuthProvider implem
 	}
 
 	public String getName() {
-		return "FranceConnectEntreprises"; 
+		return "FranceConnect Entreprises"; 
 	}
 
 	@Override
