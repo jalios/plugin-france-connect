@@ -19,7 +19,7 @@
   </java-classes>
   
   <jars>
-    <jar path="jjwt-0.7.0.jar" />
+    <jar path="jjwt-0.9.0.jar" />
     <jar path="jackson-annotations-2.8.11.jar" />
     <jar path="jackson-core-2.8.11.jar" />
     <jar path="jackson-databind-2.8.11.1.jar" />
