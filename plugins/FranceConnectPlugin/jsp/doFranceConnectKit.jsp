@@ -2,8 +2,8 @@
 %><%@ page contentType="text/html; charset=UTF-8"%><%
 %><%@ include file='/jcore/doInitPage.jspf'%><%
 
-final String fcKitURL = channel.getProperty("jcmsplugin.socialauth.provider.kit.url", null);
-final boolean isFcKitEnabled = channel.getBooleanProperty("jcmsplugin.socialauth.provider.kit.enabled", false);
+final String fcKitURL = channel.getProperty("jcmsplugin.franceconnect.kit.url", null);
+final boolean isFcKitEnabled = channel.getBooleanProperty("jcmsplugin.franceconnect.kit.enabled", false);
 final boolean isFcUser = isLogged && FranceConnectAuthenticationHandler.isFranceConnectSession(session);
 
 if (isFcKitEnabled && Util.notEmpty(fcKitURL) && isFcUser) {

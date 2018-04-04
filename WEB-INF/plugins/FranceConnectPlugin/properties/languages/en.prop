@@ -18,9 +18,9 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl:  FC Enterpr
 jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl:    FC Enterprises - Endpoint URL - Logout
 
 # Other options
-jcmsplugin.socialauth.provider.kit.enabled: Kit FranceConnect
-jcmsplugin.socialauth.provider.kit.enabled.help: Configure integration of the FranceConnect Kit in the topbar 
-jcmsplugin.socialauth.provider.kit.url: Kit FranceConnect - URL
+jcmsplugin.franceconnect.kit.enabled: Kit FranceConnect
+jcmsplugin.franceconnect.kit.enabled.help: Configure integration of the FranceConnect Kit in the topbar 
+jcmsplugin.franceconnect.kit.url: Kit FranceConnect - URL
 
 # Icon label (for alternative text)
 icon.jcmsplugin-fc.login-particuliers: Sign in with FranceConnect Particuliers
