@@ -23,6 +23,7 @@
   </jars>   
  
   <plugincomponents>
+    <datacontroller        class="bzh.jcmsplugin.fc.controllers.FranceConnectMemberDataController" types="Member" />
     <authenticationhandler class="bzh.jcmsplugin.fc.handlers.FranceConnectAuthenticationHandler" />
   </plugincomponents>
 

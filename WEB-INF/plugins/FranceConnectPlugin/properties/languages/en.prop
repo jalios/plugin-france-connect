@@ -25,3 +25,8 @@ jcmsplugin.socialauth.provider.kit.url: Kit FranceConnect - URL
 # Icon label (for alternative text)
 icon.jcmsplugin-fc.login-particuliers: Sign in with FranceConnect Particuliers
 icon.jcmsplugin-fc.login-entreprises: Sign in with FranceConnect Entreprises
+
+# ControllerStatus message 
+# Prevent modification of FranceConnecet user verified field
+jcmsplugin.franceconnect.status.field-op.self:  You are not allowed to change the lastname and firstname. Those fields were verified through your FranceConnect identity, they cannot be modified.
+jcmsplugin.franceconnect.status.field-op.other: You are not allowed to change the lastname and firstname. Those fields were verified through FranceConnect, they cannot be modified.

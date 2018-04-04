@@ -25,3 +25,8 @@ jcmsplugin.socialauth.provider.kit.url: Kit FranceConnect - URL
 # Icon label (for alternative text)
 icon.jcmsplugin-fc.login-particuliers: S'identifier avec FranceConnect Particuliers
 icon.jcmsplugin-fc.login-entreprises: S'identifier avec FranceConnect Entreprises
+
+# ControllerStatus message 
+# Prevent modification of FranceConnecet user verified field
+jcmsplugin.franceconnect.status.field-op.self:  Vous n'êtes pas autorisé à modifier le nom et prénom. Ces champs provenant de votre identité vérifiée via FranceConnect, ils ne sont pas modifiables.
+jcmsplugin.franceconnect.status.field-op.other: Vous n'êtes pas autorisé à modifier le nom et prénom. Ces champs provenant d'une identité vérifiée via FranceConnect, ils ne sont pas modifiables.
