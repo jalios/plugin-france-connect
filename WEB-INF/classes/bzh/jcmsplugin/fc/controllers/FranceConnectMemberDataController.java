@@ -13,7 +13,7 @@ import com.jalios.jcmsplugin.socialauth.SocialAuthAuthenticationHandler;
 import com.jalios.jcmsplugin.socialauth.UserInfos;
 import com.jalios.util.Util;
 
-import bzh.jcmsplugin.fc.FranceConnectType;
+import bzh.jcmsplugin.fc.FranceConnectUtils;
 
 /**
  * DataController used to control operation on FranceConnect Member.<p>
@@ -75,7 +75,7 @@ public class FranceConnectMemberDataController extends BasicDataController {
       original = channel.getMember(mbr.getId());
     }
     
-    if (!isFranceConnectUser(original)) {
+    if (!FranceConnectUtils.isFranceConnectUser(original)) {
       return ControllerStatus.OK;
     }
 
@@ -92,20 +92,6 @@ public class FranceConnectMemberDataController extends BasicDataController {
     }
 
     return ControllerStatus.OK;
-  }
-  
-  /**
-   * Check if the specified Member was created by SocialAuthentication
-   * for a FranceConnect user.  
-   */
-  static private boolean isFranceConnectUser(Member mbr) {
-    if (mbr == null) {
-      return false;
-    }
-    final String login = Util.getString(mbr.getLogin(), "");
-    final boolean isEntrepriseUser = login.startsWith("franceconnect" + FranceConnectType.ENTREPRISES.getSuffix() + ".");
-    final boolean isParticulierUser = login.startsWith("franceconnect" + FranceConnectType.PARTICULIERS.getSuffix() + ".");
-    return isEntrepriseUser || isParticulierUser;
   }
   
 }

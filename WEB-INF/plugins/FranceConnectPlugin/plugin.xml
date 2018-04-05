@@ -33,6 +33,8 @@
   
   <public-files>
     <file path="jsp/doFranceConnectKit.jsp" include="SITE_TOPBAR_MENU_LEFT" />
+    <file path="jsp/doFranceConnectMemberEditForm.jsp" include="EDIT_MBR_MAINTAB_HEADER" />
+    <file path="jsp/doFranceConnectMemberEditForm.jsp" include="PLUGIN_ESN_EDIT_PROFILE_ACCOUNT" />
   
     <directory path="images" />
     <directory path="docs" />
