@@ -1,6 +1,6 @@
 # FranceConnect plugin
 
-Module d'authentification France Connect pour Jalios JCMS / JPlatform.<br/>
+Module d'authentification FranceConnect pour Jalios JCMS / JPlatform.<br/>
 _FranceConnect Authentication plugin for  Jalios JCMS / JPlatform._
 
 # Prérequis - _Requirements_

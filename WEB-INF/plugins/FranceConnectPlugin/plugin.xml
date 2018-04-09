@@ -6,8 +6,10 @@
         license="MIT" 
         initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
  
-  <label xml:lang="fr">France Connect</label>
-  <description xml:lang="fr">Module d'authentification déléguée vers France Connect Particuliers et/ou Entreprises (https://franceconnect.gouv.fr)</description>
+  <label xml:lang="fr">Module FranceConnect</label>
+  <label xml:lang="en">FranceConnect Plugin</label>
+  <description xml:lang="fr">Module d'authentification déléguée vers FranceConnect Particuliers et/ou Entreprises (https://franceconnect.gouv.fr)</description>
+  <description xml:lang="en">FranceConnect Authentication plugin (https://franceconnect.gouv.fr)</description>
   
   <dependencies>
     <dependency name="OAuthPlugin" />

@@ -25,7 +25,7 @@ import bzh.jcmsplugin.fc.oauth.AbstractFranceConnectProvider;
  * <ol>
  *  <li>User is logged out (disconnected) from local JCMS site,</li>
  *  <li>Then user is redirected to FC logout which informs user disconnect was successful, 
- *   and propose logging out from france connect, or continuing.</li>
+ *   and propose logging out from FranceConnect, or continuing.</li>
  *  <li>User is redirected to the final logout URL specified to FC callback (which may be the site or not)</li>
  * </ol> 
  * 
