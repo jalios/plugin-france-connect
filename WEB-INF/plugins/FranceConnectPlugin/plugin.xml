@@ -39,6 +39,7 @@
     <directory path="images" />
     <directory path="docs" />
     <directory path="jsp" />
+    <directory path="css" />
     
   </public-files>
 </plugin>

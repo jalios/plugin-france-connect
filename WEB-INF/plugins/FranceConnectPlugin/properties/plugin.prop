@@ -23,7 +23,12 @@ jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl: https://fce.i
 # Other options
 jcmsplugin.franceconnect.kit.enabled.boolean: false
 jcmsplugin.franceconnect.kit.url: https://fcp.integ01.dev-franceconnect.fr/js/franceconnect.js
+jcmsplugin.franceconnect.kit.css.9: plugins/FranceConnectPlugin/css/france-connect-kit-9.css
+jcmsplugin.franceconnect.kit.css: plugins/FranceConnectPlugin/css/france-connect-kit-10.css
 
+# Kit FranceConnect in Topbar
+jcms.topbar-item.login:               plugins/FranceConnectPlugin/jsp/doFranceConnectKit.jsp
+jcms.topbar-item.login.index:         90
 
 # Authorize external redirection to FranceConnect domain
 channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$

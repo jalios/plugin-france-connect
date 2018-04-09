@@ -8,19 +8,10 @@ final boolean isFcUser = isLogged && FranceConnectAuthenticationHandler.isFrance
 
 if (isFcKitEnabled && Util.notEmpty(fcKitURL) && isFcUser) {
 	jcmsContext.addJavaScript(fcKitURL);
+	final String css = channel.getProperty("jcmsplugin.franceconnect.kit.css." + JcmsInfo.RELEASE_MAJOR, channel.getProperty("jcmsplugin.franceconnect.kit.css", ""));
+  if (Util.notEmpty(css)) {
+    jcmsContext.addCSSHeader(css);
+  }
 %>
-<style>
-#fconnect-profile > a {
-   
-    color: #000000;
-    padding: 0px 0 0px 25px;
-    
-    margin-right: 2px;
-    font-size: 12px;
-    
-    background-size: 20px;
-}
-</style>
-<div id="fconnect-profile" data-fc-logout-url="<%= ResourceHelper.getLogout() %>" class="topbar-item" ><a href="#" title="FranceConnect"><span class="glyph-alt">FranceConnect</span></a></div>
-
+<div id="fconnect-profile" data-fc-logout-url="<%= ResourceHelper.getLogout() %>" class="topbar-item topbar-item-wrapper" ><a href="#" title="FranceConnect"><span class="glyph-alt">FranceConnect</span></a></div>
 <% } %>

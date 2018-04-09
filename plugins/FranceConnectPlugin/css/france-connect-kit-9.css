@@ -1,0 +1,12 @@
+.topbar #fconnect-profile {
+  max-width: 50px;
+}
+.topbar #fconnect-profile > a {   
+  margin: 0 10px;
+  font-size: 12px;
+  
+  background-size: 30px;
+}
+.topbar #fconnect-access {
+	display:none;
+}

@@ -1,0 +1,17 @@
+.topbar #fconnect-profile {
+	max-width: 50px;
+}
+.topbar #fconnect-profile > a { 
+  display: inline-block;
+  height: 35px;
+  width: 30px;
+  background-size: 100% 100%;
+  margin: 0 10px;
+  padding: 0;
+}
+.topbar #fconnect-access { 
+  right: 0;
+}
+.topbar #fconnect-access:before, #fconnect-access:after { 
+  display:none;
+}
