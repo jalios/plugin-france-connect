@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plugin PUBLIC "-//JALIOS//DTD JCMS-PLUGIN 1.6//EN" "http://support.jalios.com/dtd/jcms-plugin-1.6.dtd">
 <plugin name="FranceConnectPlugin" 
-        version="1.9" 
+        version="1.10-dev" 
         author="Benoît Moraillon - Région Bretagne" 
         license="MIT" 
         initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
