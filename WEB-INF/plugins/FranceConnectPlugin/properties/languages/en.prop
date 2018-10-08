@@ -1,3 +1,13 @@
+# Agents
+jcmsplugin.socialauth.provider.franceconnectagents.apiKey:       FC Agents - Client ID
+jcmsplugin.socialauth.provider.franceconnectagents.apiSecret:    FC Agents - Client Secret
+jcmsplugin.socialauth.provider.franceconnectagents.scope:        FC Agents - User data - Scope
+jcmsplugin.socialauth.provider.franceconnectagents.tokenUrl:     FC Agents - Endpoint URL - Token
+jcmsplugin.socialauth.provider.franceconnectagents.authorizeUrl: FC Agents - Endpoint URL - Authorize
+jcmsplugin.socialauth.provider.franceconnectagents.userInfoUrl:  FC Agents - Endpoint URL - UserInfo
+jcmsplugin.socialauth.provider.franceconnectagents.logoutUrl:    FC Agents - Endpoint URL - Logout
+
+
 # Particuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey:       FC Particuliers - Client ID
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret:    FC Particuliers - Client Secret

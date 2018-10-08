@@ -6,6 +6,7 @@ package bzh.jcmsplugin.fc;
  * @since fc-1.9
  */
 public enum FranceConnectType {
+  AGENTS(),
   ENTREPRISES(),
   PARTICULIERS();
   

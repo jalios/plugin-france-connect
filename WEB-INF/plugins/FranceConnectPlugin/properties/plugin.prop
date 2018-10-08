@@ -1,3 +1,14 @@
+# Agents
+jcmsplugin.socialauth.provider.franceconnectagents.class: bzh.jcmsplugin.fc.oauth.FranceConnectAgents
+jcmsplugin.socialauth.provider.franceconnectagents.apiKey: 
+jcmsplugin.socialauth.provider.franceconnectagents.apiSecret: 
+jcmsplugin.socialauth.provider.franceconnectagents.granttype: authorization_code
+jcmsplugin.socialauth.provider.franceconnectagents.scope: openid profile email
+jcmsplugin.socialauth.provider.franceconnectagents.tokenUrl: https://fca.int-cw.dev-franceconnect.fr/api/v1/token
+jcmsplugin.socialauth.provider.franceconnectagents.authorizeUrl: https://fca.int-cw.dev-franceconnect.fr/api/v1/authorize
+jcmsplugin.socialauth.provider.franceconnectagents.userInfoUrl: https://fca.int-cw.dev-franceconnect.fr/api/v1/userinfo
+jcmsplugin.socialauth.provider.franceconnectagents.logoutUrl: https://fca.int-cw.dev-franceconnect.fr/api/v1/logout
+
 # Particuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.class: bzh.jcmsplugin.fc.oauth.FranceConnectParticuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey: 
@@ -34,6 +45,7 @@ jcms.topbar-item.kitfranceconnect.index:         90
 channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$
 
 # Icons
+icon.jcmsplugin-fc.login-agents: plugins/FranceConnectPlugin/images/FCboutons-13.png
 icon.jcmsplugin-fc.login-particuliers: plugins/FranceConnectPlugin/images/FCboutons-10.png
 icon.jcmsplugin-fc.login-entreprises: plugins/FranceConnectPlugin/images/FCboutons-11.png
 
