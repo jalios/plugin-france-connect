@@ -16,7 +16,7 @@ jcmsplugin.socialauth.provider.franceconnectparticuliers.production.help:   Enab
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey:       FC Enterprises - Client ID
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret:    FC Enterprises - Client Secret
 jcmsplugin.socialauth.provider.franceconnectentreprises.scope:        FC Enterprises - User data - Scope
-jcmsplugin.socialauth.provider.franceconnectentreprises.production:   FC Enterprises - Use production endpoint
+jcmsplugin.socialauth.provider.franceconnectentreprises.production:   FC Enterprises - Production
 jcmsplugin.socialauth.provider.franceconnectentreprises.production.help:   Enable to use production endpoints, disable to use integration endpoints
 
 # Other options
