@@ -45,7 +45,7 @@ jcms.topbar-item.kitfranceconnect:               plugins/FranceConnectPlugin/jsp
 jcms.topbar-item.kitfranceconnect.index:         90
 
 # Authorize external redirection to FranceConnect domain
-channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect\.fr(/[^\\s]*)?$
+channel.security.authorized-redirect.franceconnect: ^https?://.*franceconnect(\.gouv)?\.fr(/[^\\s]*)?$
 
 # Icons
 icon.jcmsplugin-fc.login-agents: plugins/FranceConnectPlugin/images/FCboutons-13.png
