@@ -33,7 +33,11 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
   private Channel channel = Channel.getChannel();
   
 	private String scope = "";
-	private String grantType = "";
+	
+  private boolean prod = false;
+  private String domain = "";
+  
+	private String userInfoUrl = "";
   private String logoutUrl = "";
 
   //-------------------------------------------------------------------
@@ -72,9 +76,12 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
 
 	private void initProperties() {
 		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".scope");
-		this.grantType = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".userInfoUrl");
-		
-    this.logoutUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".logoutUrl");    
+
+    this.prod = channel.getBooleanProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".production", false);
+    this.domain = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix() + "." + (prod ? "production" : "validation") + ".domain");
+    
+    this.userInfoUrl = domain + channel.getProperty("jcmsplugin.franceconnect.endpoint.userInfo");
+    this.logoutUrl = domain + channel.getProperty("jcmsplugin.franceconnect.endpoint.logout");
 	}
 	
   //-------------------------------------------------------------------
@@ -90,11 +97,10 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
 		return "FranceConnect "+getType().getSuffix(); 
 	}
 
-	@Override
-	public String getGrantType() {
-		return this.grantType;
-	}
-
+  public String getDomain() {
+    return domain;
+  }
+	
 	@Override
 	public String getScope() {
 		return this.scope;
@@ -114,7 +120,7 @@ public abstract class AbstractFranceConnectProvider extends BasicOAuthProvider
   
   public UserInfos getUserInfos(Token paramToken) {
     try {
-      final OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, this.grantType + "?schema=openid");
+      final OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, this.userInfoUrl + "?schema=openid");
       oauthRequest.addHeader("Authorization", "Bearer " + paramToken.getToken());
 
       final Response response = oauthRequest.send();

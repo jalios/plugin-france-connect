@@ -42,6 +42,10 @@ public abstract class AbstractFranceConnectApi extends DefaultApi20 implements J
   private Channel channel = Channel.getChannel();
   
 	private String scope = "";
+	
+	private boolean prod = false;
+  private String domain = "";
+  
 	private String fcTokenUrl = "";
 	private String fcAuthorizeUrl = "";
 	
@@ -79,8 +83,11 @@ public abstract class AbstractFranceConnectApi extends DefaultApi20 implements J
 	private void initProperties() {
 		this.scope = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".scope");
 		
-		this.fcTokenUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".tokenUrl");
-		this.fcAuthorizeUrl = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".authorizeUrl");
+    this.prod = channel.getBooleanProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".production", false);
+    this.domain = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix() + "." + (prod ? "production" : "validation") + ".domain");
+    
+		this.fcTokenUrl = domain + channel.getProperty("jcmsplugin.franceconnect.endpoint.token");
+		this.fcAuthorizeUrl = domain + channel.getProperty("jcmsplugin.franceconnect.endpoint.authorize");
 		
 		this.apiSecret = channel.getProperty("jcmsplugin.socialauth.provider.franceconnect"+getType().getSuffix()+".apiSecret");
 		this.franceConnectJsonTokenExtractor = new FranceConnectJsonTokenExtractor(this.apiSecret);

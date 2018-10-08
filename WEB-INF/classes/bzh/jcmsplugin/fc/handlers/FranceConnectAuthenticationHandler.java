@@ -135,10 +135,23 @@ public class FranceConnectAuthenticationHandler extends AuthenticationHandler {
    * @since fc-1.9
    */
   public static boolean isFranceConnectSession(HttpSession session) {
+    return getFranceConnectProvider(session) != null;
+  }
+  
+  /**
+   * Retrieve the current FranceConnect Provider implementation instance used for sign-in.
+   * @param session the current HttpSession
+   * @return the AbstractFranceConnectProvider if available, null if none
+   * @since fc-2.0
+   */
+  public static AbstractFranceConnectProvider getFranceConnectProvider(HttpSession session) {
     if (session == null) {
-      return false;
+      return null;
     }
     SocialAuthOAuthProvider socialAuthProvider = SocialAuthAuthenticationHandler.getInstance().getProviders().getProviderFromSession(session);
-    return socialAuthProvider instanceof AbstractFranceConnectProvider;
+    if (socialAuthProvider instanceof AbstractFranceConnectProvider) {
+      return (AbstractFranceConnectProvider) socialAuthProvider;
+    }
+    return null;
   }
 }

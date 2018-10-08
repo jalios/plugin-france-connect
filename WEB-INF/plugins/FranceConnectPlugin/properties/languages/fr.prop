@@ -2,35 +2,26 @@
 jcmsplugin.socialauth.provider.franceconnectagents.apiKey:       FC Agents - Identifiant client
 jcmsplugin.socialauth.provider.franceconnectagents.apiSecret:    FC Agents - Clé secrète
 jcmsplugin.socialauth.provider.franceconnectagents.scope:        FC Agents - Données usager - Scope
-jcmsplugin.socialauth.provider.franceconnectagents.tokenUrl:     FC Agents - Endpoint URL - Token
-jcmsplugin.socialauth.provider.franceconnectagents.authorizeUrl: FC Agents - Endpoint URL - Authorize
-jcmsplugin.socialauth.provider.franceconnectagents.userInfoUrl:  FC Agents - Endpoint URL - UserInfo
-jcmsplugin.socialauth.provider.franceconnectagents.logoutUrl:    FC Agents - Endpoint URL - Logout
-
+jcmsplugin.socialauth.provider.franceconnectagents.production:   FC Agents - Production
+jcmsplugin.socialauth.provider.franceconnectagents.production.help:   Activez pour utiliser les endpoint de production, désactivez pour utiliser les endpoints de recette.
 
 # Particuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey:       FC Particuliers - Identifiant client
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret:    FC Particuliers - Clé secrète
 jcmsplugin.socialauth.provider.franceconnectparticuliers.scope:        FC Particuliers - Données usager - Scope
-jcmsplugin.socialauth.provider.franceconnectparticuliers.tokenUrl:     FC Particuliers - Endpoint URL - Token
-jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl: FC Particuliers - Endpoint URL - Authorize
-jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl:  FC Particuliers - Endpoint URL - UserInfo
-jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl:    FC Particuliers - Endpoint URL - Logout
-
+jcmsplugin.socialauth.provider.franceconnectparticuliers.production:   FC Particuliers - Production
+jcmsplugin.socialauth.provider.franceconnectparticuliers.production.help:   Activez pour utiliser les endpoint de production, désactivez pour utiliser les endpoints de recette.
 
 # Entreprises
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey:       FC Enterprises - Identifiant client
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret:    FC Enterprises - Clé secrète
 jcmsplugin.socialauth.provider.franceconnectentreprises.scope:        FC Enterprises - Données usager - Scope
-jcmsplugin.socialauth.provider.franceconnectentreprises.tokenUrl:     FC Enterprises - Endpoint URL - Token
-jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl: FC Enterprises - Endpoint URL - Authorize
-jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl:  FC Enterprises - Endpoint URL - UserInfo
-jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl:    FC Enterprises - Endpoint URL - Logout
+jcmsplugin.socialauth.provider.franceconnectentreprises.production:   FC Enterprises - Production
+jcmsplugin.socialauth.provider.franceconnectentreprises.production.help:   Activez pour utiliser les endpoint de production, désactivez pour utiliser les endpoints de recette.
 
 # Other options
 jcmsplugin.franceconnect.kit.enabled: Kit FranceConnect
 jcmsplugin.franceconnect.kit.enabled.help: Configurer l'intégration du Kit FranceConnect dans la topbar 
-jcmsplugin.franceconnect.kit.url: Kit FranceConnect - URL
 
 # Icon label (for alternative text)
 icon.jcmsplugin-fc.login-particuliers: S'identifier avec FranceConnect Particuliers

@@ -2,35 +2,26 @@
 jcmsplugin.socialauth.provider.franceconnectagents.apiKey:       FC Agents - Client ID
 jcmsplugin.socialauth.provider.franceconnectagents.apiSecret:    FC Agents - Client Secret
 jcmsplugin.socialauth.provider.franceconnectagents.scope:        FC Agents - User data - Scope
-jcmsplugin.socialauth.provider.franceconnectagents.tokenUrl:     FC Agents - Endpoint URL - Token
-jcmsplugin.socialauth.provider.franceconnectagents.authorizeUrl: FC Agents - Endpoint URL - Authorize
-jcmsplugin.socialauth.provider.franceconnectagents.userInfoUrl:  FC Agents - Endpoint URL - UserInfo
-jcmsplugin.socialauth.provider.franceconnectagents.logoutUrl:    FC Agents - Endpoint URL - Logout
-
+jcmsplugin.socialauth.provider.franceconnectagents.production:   FC Agents - Production
+jcmsplugin.socialauth.provider.franceconnectagents.production.help:   Enable to use production endpoints, disable to use integration endpoints
 
 # Particuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiKey:       FC Particuliers - Client ID
 jcmsplugin.socialauth.provider.franceconnectparticuliers.apiSecret:    FC Particuliers - Client Secret
 jcmsplugin.socialauth.provider.franceconnectparticuliers.scope:        FC Particuliers - User data - Scope
-jcmsplugin.socialauth.provider.franceconnectparticuliers.tokenUrl:     FC Particuliers - Endpoint URL - Token
-jcmsplugin.socialauth.provider.franceconnectparticuliers.authorizeUrl: FC Particuliers - Endpoint URL - Authorize
-jcmsplugin.socialauth.provider.franceconnectparticuliers.userInfoUrl:  FC Particuliers - Endpoint URL - UserInfo
-jcmsplugin.socialauth.provider.franceconnectparticuliers.logoutUrl:    FC Particuliers - Endpoint URL - Logout
-
+jcmsplugin.socialauth.provider.franceconnectparticuliers.production:   FC Particuliers - Production
+jcmsplugin.socialauth.provider.franceconnectparticuliers.production.help:   Enable to use production endpoints, disable to use integration endpoints
 
 # Entreprises
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiKey:       FC Enterprises - Client ID
 jcmsplugin.socialauth.provider.franceconnectentreprises.apiSecret:    FC Enterprises - Client Secret
 jcmsplugin.socialauth.provider.franceconnectentreprises.scope:        FC Enterprises - User data - Scope
-jcmsplugin.socialauth.provider.franceconnectentreprises.tokenUrl:     FC Enterprises - Endpoint URL - Token
-jcmsplugin.socialauth.provider.franceconnectentreprises.authorizeUrl: FC Enterprises - Endpoint URL - Authorize
-jcmsplugin.socialauth.provider.franceconnectentreprises.userInfoUrl:  FC Enterprises - Endpoint URL - UserInfo
-jcmsplugin.socialauth.provider.franceconnectentreprises.logoutUrl:    FC Enterprises - Endpoint URL - Logout
+jcmsplugin.socialauth.provider.franceconnectentreprises.production:   FC Enterprises - Use production endpoint
+jcmsplugin.socialauth.provider.franceconnectentreprises.production.help:   Enable to use production endpoints, disable to use integration endpoints
 
 # Other options
 jcmsplugin.franceconnect.kit.enabled: Kit FranceConnect
 jcmsplugin.franceconnect.kit.enabled.help: Configure integration of the FranceConnect Kit in the topbar 
-jcmsplugin.franceconnect.kit.url: Kit FranceConnect - URL
 
 # Icon label (for alternative text)
 icon.jcmsplugin-fc.login-particuliers: Sign in with FranceConnect Particuliers

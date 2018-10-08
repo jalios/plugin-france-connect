@@ -1,12 +1,14 @@
-<%@ page import="bzh.jcmsplugin.fc.handlers.FranceConnectAuthenticationHandler" %><%
+<%@ page import="bzh.jcmsplugin.fc.oauth.AbstractFranceConnectProvider" %><%
+%><%@ page import="bzh.jcmsplugin.fc.handlers.FranceConnectAuthenticationHandler" %><%
 %><%@ page contentType="text/html; charset=UTF-8"%><%
 %><%@ include file='/jcore/doInitPage.jspf'%><%
 
-final String fcKitURL = channel.getProperty("jcmsplugin.franceconnect.kit.url", null);
 final boolean isFcKitEnabled = channel.getBooleanProperty("jcmsplugin.franceconnect.kit.enabled", false);
 final boolean isFcUser = isLogged && FranceConnectAuthenticationHandler.isFranceConnectSession(session);
 
-if (isFcKitEnabled && Util.notEmpty(fcKitURL) && isFcUser) {
+if (isFcKitEnabled && isFcUser) {
+  final AbstractFranceConnectProvider fcProvider = FranceConnectAuthenticationHandler.getFranceConnectProvider(session);
+  final String fcKitURL = fcProvider.getDomain() + channel.getProperty("jcmsplugin.franceconnect.kit.path", "/js/franceconnect.js");
 	jcmsContext.addJavaScript(fcKitURL);
 	final String css = channel.getProperty("jcmsplugin.franceconnect.kit.css." + JcmsInfo.RELEASE_MAJOR, channel.getProperty("jcmsplugin.franceconnect.kit.css", ""));
   if (Util.notEmpty(css)) {
