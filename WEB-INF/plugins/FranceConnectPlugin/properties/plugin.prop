@@ -12,7 +12,7 @@ jcmsplugin.socialauth.provider.franceconnectagents.granttype: authorization_code
 jcmsplugin.socialauth.provider.franceconnectagents.scope: openid profile email
 jcmsplugin.socialauth.provider.franceconnectagents.production.boolean: false
 jcmsplugin.socialauth.provider.franceconnectagents.validation.domain: https://fca.int-cw.dev-franceconnect.fr
-jcmsplugin.socialauth.provider.franceconnectagents.production.domain: https://apa.franceconnect.gouv.fr
+jcmsplugin.socialauth.provider.franceconnectagents.production.domain: https://appa.franceconnect.gouv.fr
 
 # Particuliers
 jcmsplugin.socialauth.provider.franceconnectparticuliers.class: bzh.jcmsplugin.fc.oauth.FranceConnectParticuliers
