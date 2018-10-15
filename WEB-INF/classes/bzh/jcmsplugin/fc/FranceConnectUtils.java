@@ -22,7 +22,8 @@ public class FranceConnectUtils {
     final String login = Util.getString(mbr.getLogin(), "");
     final boolean isEntrepriseUser = login.startsWith("franceconnect" + FranceConnectType.ENTREPRISES.getSuffix() + ".");
     final boolean isParticulierUser = login.startsWith("franceconnect" + FranceConnectType.PARTICULIERS.getSuffix() + ".");
-    return isEntrepriseUser || isParticulierUser;
+    final boolean isAgentUser = login.startsWith("franceconnect" + FranceConnectType.AGENTS.getSuffix() + ".");
+    return isEntrepriseUser || isParticulierUser || isAgentUser;
   }
 
 }
