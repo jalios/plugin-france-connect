@@ -8,6 +8,7 @@ _FranceConnect Authentication plugin for  Jalios JCMS / JPlatform._
 * Jalios JCMS 9.0.2+ or Jalios JPlatform 10.0.0+
 * [OAuth Plugin](https://community.jalios.com/plugin/oauth)
 * [Social Authentication Plugin 1.2+](https://community.jalios.com/plugin/socialauth)
+* Java 8 (Java 11 is not yet supported, cf [#13](https://github.com/jalios/plugin-france-connect/issues/13))
 
 # Historique - _History_
 
