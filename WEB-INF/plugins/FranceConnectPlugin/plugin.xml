@@ -4,7 +4,7 @@
         version="1.10-dev" 
         author="Jalios SA - Région Bretagne" 
         license="MIT" 
-        initialize="true" jcms="" order="0" url="" jsync="false" appserver="">
+        initialize="true" jcms="" order="0" url="https://community.jalios.com/plugin/franceconnect" jsync="false" appserver="">
  
   <label xml:lang="fr">Module FranceConnect</label>
   <label xml:lang="en">FranceConnect Plugin</label>
