@@ -31,12 +31,26 @@
     
     <!--
       JSON Web Token (aka jjwt)
-      https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt 
+      https://github.com/jwtk/jjwt
+      https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+      https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
     -->
     <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt</artifactId>
-      <version>0.9.0</version>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.10.7</version>
+    </dependency>
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>0.10.7</version>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>0.10.7</version>
+        <scope>runtime</scope>
     </dependency>
     
     <!-- Transitive dependency required by jjwt -->

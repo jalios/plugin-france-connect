@@ -21,7 +21,9 @@
   </java-classes>
   
   <jars>
-    <jar path="jjwt-0.9.0.jar" />
+    <jar path="jjwt-api-0.10.7.jar" />
+    <jar path="jjwt-impl-0.10.7.jar" />
+    <jar path="jjwt-jackson-0.10.7.jar" />
   </jars>   
  
   <plugincomponents>
